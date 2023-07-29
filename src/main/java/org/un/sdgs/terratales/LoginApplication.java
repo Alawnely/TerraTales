@@ -24,8 +24,8 @@ public class LoginApplication extends Application {
         window.isResizable();
         window.initStyle(StageStyle.UNDECORATED);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 540, 720);
 
         window.setScene(scene);
         window.show();
