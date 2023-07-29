@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class LoginApplication extends Application {
 
-
-    public void changeScene(String fxml, ) throws IOException {
+    static Stage window;
+    public void changeScene(String fxml) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         window.getScene().setRoot(fxmlLoader.load());
@@ -24,5 +24,11 @@ public class LoginApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
     }
 }

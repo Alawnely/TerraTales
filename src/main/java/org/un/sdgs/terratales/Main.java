@@ -9,16 +9,15 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Main extends Application {
+    static Stage window;
     @Override
     public void start(Stage stage) throws IOException {
-
-        Stage window;
 
         window = stage;
         window.isResizable();
         window.initStyle(StageStyle.UNDECORATED);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 540, 720);
 
         window.setScene(scene);
