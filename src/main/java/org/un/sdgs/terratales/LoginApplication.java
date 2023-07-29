@@ -15,23 +15,9 @@ import java.io.IOException;
 
 public class LoginApplication extends Application {
 
-    private static Stage window;
 
+    public void changeScene(String fxml, ) throws IOException {
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        window = stage;
-        window.isResizable();
-        window.initStyle(StageStyle.UNDECORATED);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 540, 720);
-
-        window.setScene(scene);
-        window.show();
-    }
-
-    public void changeScene(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         window.getScene().setRoot(fxmlLoader.load());
     }
