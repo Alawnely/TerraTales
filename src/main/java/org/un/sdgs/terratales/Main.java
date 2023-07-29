@@ -10,6 +10,11 @@ import java.io.IOException;
 
 public class Main extends Application {
     static Stage window;
+
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -24,7 +29,9 @@ public class Main extends Application {
         window.show();
     }
 
-    public static void main(String[] args) {
-        launch();
+    public void changeScene(String fxml) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
+        window.getScene().setRoot(fxmlLoader.load());
     }
 }

@@ -26,7 +26,7 @@ public class MainController {
     }
 
     public void signIn(ActionEvent actionEvent) {
-        com.example.javafx.LoginApplication loginApp = new com.example.javafx.LoginApplication();
+        Main loginApp = new Main();
         if (username.getText().toString().equals("admin")
                 && password.getText().toString().equals("1234")) {
             prompt.setText("Login SUCCESS! Access Granted ...");
