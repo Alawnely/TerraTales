@@ -14,7 +14,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="username" text="Username" />
-            <PasswordField fx:id="password" text="Password" />
+            <PasswordField fx:id="password" onAction="#signIn" text="Password" />
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#signIn" text="Sign In" />
          </children>
       </VBox>
