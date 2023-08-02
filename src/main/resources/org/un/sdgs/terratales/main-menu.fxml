@@ -11,4 +11,5 @@
 
     <Label fx:id="welcomeText" alignment="CENTER" prefHeight="18.0" prefWidth="121.0" text="Terratales!" />
     <Button onAction="#onViewLocationClick" text="View Location Test" />
+   <Button mnemonicParsing="false" text="View Favorites" />
 </VBox>

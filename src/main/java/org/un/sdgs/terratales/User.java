@@ -31,8 +31,19 @@ public class User {
         this.password = password;
     }
 
+    public void addFavorites(String location) {
+        favoritesList.add(location);
+        System.out.println(username+": added "+location);
+    }
+
+    public void removeFavorites(String location) {
+        favoritesList.remove(location);
+        System.out.println(username+": removed " +location);
+    }
+
     public ArrayList<String> getFavoritesList() {
         return favoritesList;
+
     }
 
     @Override

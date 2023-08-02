@@ -21,10 +21,17 @@ public class LoginController {
 
     @FXML
     private void initialize() {
+        /* Loads Default Users*/
         UserDatabase.loadDefaultUsers();
+        /* Sets Current User to First Element of UserDatabase*/
+        UserDatabase.currentUser = UserDatabase.userList.get(0);
     }
 
     public void signIn(ActionEvent actionEvent) {
+        //TODO: Update Login Logout According To UserDatabase
+        //TODO: Add Sign In and Sign Out UI
+        //TODO: Add Logout (User must be signed in to access the app)
+
         Main loginApp = new Main();
         if (username.getText().equals("admin")
                 && password.getText().equals("1234")) {

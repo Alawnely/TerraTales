@@ -6,6 +6,8 @@ public class UserDatabase {
 
     public static ArrayList<User> userList = new ArrayList<>();
 
+    public static User currentUser;
+
     /**
      * Loads Default + Admin Users
      */
@@ -26,6 +28,7 @@ public class UserDatabase {
         userList.add(user3);
         userList.add(admin);
 
-        System.out.println(userList.toString());
+        /* Debugging */
+        System.out.println(userList);
     }
 }

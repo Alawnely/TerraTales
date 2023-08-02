@@ -4,10 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="336.0" maxWidth="422.0" minHeight="235.0" minWidth="317.0" prefHeight="336.0" prefWidth="422.0"
-            xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.un.sdgs.terratales.LocationViewTest">
+<AnchorPane maxHeight="336.0" maxWidth="422.0" minHeight="235.0" minWidth="317.0" prefHeight="336.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationViewTest">
    <children>
       <Label fx:id="nameLabel" layoutX="15.0" layoutY="18.0" maxWidth="110.0" prefHeight="41.0" prefWidth="107.0" text="Daintree Rainforest" wrapText="true" />
       <Label fx:id="placeLabel" layoutX="15.0" layoutY="59.0" prefHeight="18.0" prefWidth="107.0" text="Australia" />
@@ -18,7 +15,7 @@
             <Image url="@LocationSRC/Amazon Rainforest.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="11.0" layoutY="102.0" mnemonicParsing="false" text="Favorite" />
+      <Button fx:id="favoriteButton" layoutX="11.0" layoutY="102.0" mnemonicParsing="false" onAction="#onFavoriteClick" text="Favorite" />
       <Button layoutX="351.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClickNext" text="Next" />
       <Button layoutX="20.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClickBack" text="Back" />
    </children>
