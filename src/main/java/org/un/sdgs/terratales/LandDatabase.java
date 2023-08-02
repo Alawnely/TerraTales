@@ -21,8 +21,10 @@ public class LandDatabase {
                 String[] LandAttributes = line.split("-");
                 String name = LandAttributes[0];
                 String place = LandAttributes[1];
-                String description = LandAttributes[2];
-                Location location = new Location(name, place, description);
+                int x = Integer.parseInt(LandAttributes[2]);
+                int y = Integer.parseInt(LandAttributes[3]);
+                String description = LandAttributes[4];
+                Location location = new Location(name, place, description, x,y);
                 locationList.add(location);
             }
             /* Debugging */
@@ -31,5 +33,4 @@ public class LandDatabase {
             System.out.println("File does not Exist");
         }
     }
-
 }
