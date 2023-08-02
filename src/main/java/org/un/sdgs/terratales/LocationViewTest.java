@@ -17,18 +17,32 @@ public class LocationViewTest {
     @FXML
     ImageView locationImage;
 
+    private static int locIndex;
+
     @FXML
     private void initialize() {
         /* Debugging LandDatabase Load*/
         LandDatabase.loadLocations();
-        changeLocation(2);
+        /* Set Initial Index Value */
+        locIndex = 0;
+        changeLocation(locIndex);
     }
+    @FXML
     public void onClickNext(ActionEvent actionEvent) {
 
+        if (locIndex+1 <= LandDatabase.locationList.size()-1) {
+            locIndex+=1;
+            changeLocation(locIndex);
+            System.out.println("Next: "+(locIndex));
+        }
     }
-
+    @FXML
     public void onClickBack(ActionEvent actionEvent) {
-
+        if (locIndex-1 <= LandDatabase.locationList.size()-1 && locIndex-1 > 0) {
+            locIndex-=1;
+            changeLocation(locIndex);
+            System.out.println("Back: "+(locIndex));
+        }
     }
 
     private void setLocationImage(String filename){

@@ -34,7 +34,7 @@ public class MainController {
             PauseTransition pause = new PauseTransition(Duration.seconds(1));
             pause.setOnFinished(e -> {
                 try {
-                    loginApp.changeScene("main-menu.fxml");
+                    loginApp.changeScene(actionEvent,"main-menu.fxml");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

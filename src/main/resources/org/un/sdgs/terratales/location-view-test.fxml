@@ -4,19 +4,22 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="235.0" maxWidth="317.0" minHeight="235.0" minWidth="317.0" prefHeight="235.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationViewTest">
+<AnchorPane maxHeight="336.0" maxWidth="422.0" minHeight="235.0" minWidth="317.0" prefHeight="336.0" prefWidth="422.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.un.sdgs.terratales.LocationViewTest">
    <children>
-      <Label fx:id="nameLabel" layoutX="14.0" layoutY="10.0" text="Daintree Rainforest" />
-      <Label fx:id="placeLabel" layoutX="13.0" layoutY="33.0" text="Australia" />
-      <Label fx:id="descriptionLabel" layoutX="12.0" layoutY="106.0" maxWidth="300.0" prefHeight="81.0" prefWidth="300.0" text="The Daintree Rainforest is one of the oldest rainforests on Earth, known for its unique biodiversity and pristine landscapes. It is a World Heritage site and an essential habitat for many rare and endangered species" wrapText="true" />
+      <Label fx:id="nameLabel" layoutX="15.0" layoutY="18.0" maxWidth="110.0" prefHeight="41.0" prefWidth="107.0" text="Daintree Rainforest" wrapText="true" />
+      <Label fx:id="placeLabel" layoutX="15.0" layoutY="59.0" prefHeight="18.0" prefWidth="107.0" text="Australia" />
+      <Label fx:id="descriptionLabel" layoutX="61.0" layoutY="141.0" maxWidth="300.0" prefHeight="115.0" prefWidth="300.0" text="The Daintree Rainforest is one of the oldest rainforests on Earth, known for its unique biodiversity and pristine landscapes. It is a World Heritage site and an essential habitat for many rare and endangered species" wrapText="true" />
       <ImageView fitHeight="97.0" fitWidth="140.0" layoutX="131.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="locationImage" fitHeight="90.0" fitWidth="116.0" layoutX="141.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="locationImage" fitHeight="145.0" fitWidth="229.0" layoutX="165.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@LocationSRC/Amazon Rainforest.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="11.0" layoutY="76.0" mnemonicParsing="false" text="Favorite" />
-      <Button layoutX="257.0" layoutY="199.0" mnemonicParsing="false" text="Next" />
-      <Button layoutX="20.0" layoutY="199.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="11.0" layoutY="102.0" mnemonicParsing="false" text="Favorite" />
+      <Button layoutX="351.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClickNext" text="Next" />
+      <Button layoutX="20.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClickBack" text="Back" />
    </children>
 </AnchorPane>

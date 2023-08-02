@@ -15,7 +15,7 @@ public class MenuController {
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> {
             try {
-                app.changeScene("location-view-test.fxml");
+                app.changeScene(actionEvent,"location-view-test.fxml");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
