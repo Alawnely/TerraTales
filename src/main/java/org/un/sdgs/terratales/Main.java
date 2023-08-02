@@ -32,6 +32,9 @@ public class Main extends Application {
         UserDatabase.loadDefaultUsers();
         /* Debugging LandDatabase Load*/
         LandDatabase.loadLocations();
+
+        /* Sets Current User to First Element of UserDatabase*/
+        UserDatabase.currentUser = UserDatabase.userList.get(0);
     }
 
     public void changeScene(ActionEvent event, String fxml) throws IOException {

@@ -21,8 +21,6 @@ public class LoginController {
 
     @FXML
     private void initialize() {
-        /* Sets Current User to First Element of UserDatabase*/
-        UserDatabase.currentUser = UserDatabase.userList.get(0);
     }
 
     public void signIn(ActionEvent actionEvent) {
