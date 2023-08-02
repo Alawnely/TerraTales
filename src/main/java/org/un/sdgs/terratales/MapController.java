@@ -42,16 +42,6 @@ public class MapController extends Application {
         moveMap("", 0);
     }
 
-    @FXML
-    private void onViewLocationAction(ActionEvent actionEvent) {
-        Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"location-view-test.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-
     private void moveMap(String movement, int relZoom) {
         // Get original width and height values
         float origWidth = (float) map.getWidth();
@@ -132,5 +122,30 @@ public class MapController extends Application {
     @FXML
     private void onZoomOutAction() {
         moveMap("", -1);
+    }
+
+    @FXML
+    private void onViewLocationAction(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"location-view-test.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @FXML
+    private void onViewFavoritesAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    private void onSignOutAction(ActionEvent actionEvent) {
+        Main main = new Main();
+        try {
+            main.changeScene(actionEvent,"sign-in.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

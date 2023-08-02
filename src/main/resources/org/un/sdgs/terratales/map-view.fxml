@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="720.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.MapController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" spacing="20.0" BorderPane.alignment="CENTER">
@@ -45,7 +44,12 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <Button mnemonicParsing="false" onAction="#onViewLocationAction" text="View Location Test" />
+            <HBox spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onViewLocationAction" text="All Locations" />
+                  <Button mnemonicParsing="false" onAction="#onViewFavoritesAction" text="Favorites" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>
@@ -63,7 +67,7 @@
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
                   <Label text="ProfileName" />
-                  <Button mnemonicParsing="false" text="Sign out">
+                  <Button mnemonicParsing="false" onAction="#onSignOutAction" text="Sign out">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
