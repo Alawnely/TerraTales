@@ -13,7 +13,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MapController extends Application {
-    static Stage window;
+    @FXML
+    private ImageView mapImage;
+    private Image map;
+    private int mapX, mapY, mapZoomLevel;
 
     public static void main(String[] args) {
         launch();
@@ -21,20 +24,11 @@ public class MapController extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        window = stage;
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("map-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        window.setScene(scene);
-        window.show();
+        stage.setScene(scene);
+        stage.show();
     }
-
-    @FXML
-    private ImageView mapImage;
-    private Image map;
-    private PixelReader mapPixels;
-    private int mapX, mapY, mapZoomLevel;
 
     private void moveMap(String movement, int relZoom) {
         // Calculate previous width and height values
@@ -94,32 +88,32 @@ public class MapController extends Application {
     }
 
     @FXML
-    protected void moveUp() {
+    private void moveUp() {
         moveMap("^", 0);
     }
 
     @FXML
-    protected void moveLeft() {
+    private void moveLeft() {
         moveMap("<", 0);
     }
 
     @FXML
-    protected void moveRight() {
+    private void moveRight() {
         moveMap(">", 0);
     }
 
     @FXML
-    protected void moveDown() {
+    private void moveDown() {
         moveMap("v", 0);
     }
 
     @FXML
-    protected void zoomIn() {
+    private void zoomIn() {
         moveMap("", 1);
     }
 
     @FXML
-    protected void zoomOut() {
+    private void zoomOut() {
         moveMap("", -1);
     }
 }
