@@ -22,12 +22,9 @@ public class Main extends Application {
 
         LandDatabase.loadLocations();
         window = stage;
-        window.isResizable();
-        window.initStyle(StageStyle.UNDECORATED);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 540, 720);
-
+        Scene scene = new Scene(fxmlLoader.load());
         window.setScene(scene);
         window.show();
     }
