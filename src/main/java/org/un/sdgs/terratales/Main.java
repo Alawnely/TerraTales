@@ -18,6 +18,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        /* Debugging LandDatabase Load*/
+
+        LandDatabase.loadLocations();
         window = stage;
         window.isResizable();
         window.initStyle(StageStyle.UNDECORATED);
