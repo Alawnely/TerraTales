@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -7,42 +8,76 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="540.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.MapController">
-   <children>
-      <ImageView fx:id="mapImage" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
-      <BorderPane prefHeight="100.0" prefWidth="100.0">
-         <top>
-            <Button mnemonicParsing="false" onAction="#moveUp" text="^" BorderPane.alignment="CENTER" />
-         </top>
+<BorderPane prefHeight="720.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.MapController">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="mapImage" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+            <BorderPane prefHeight="100.0" prefWidth="100.0">
+               <top>
+                  <Button mnemonicParsing="false" onAction="#onMoveUpAction" text="^" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <Button mnemonicParsing="false" onAction="#onMoveLeftAction" text="&lt;" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Button mnemonicParsing="false" onAction="#onMoveRightAction" text="&gt;" BorderPane.alignment="CENTER" />
+               </right>
+               <bottom>
+                  <Button mnemonicParsing="false" onAction="#onMoveDownAction" text="v" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+            <HBox spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onZoomInAction" text="+" />
+                  <Button mnemonicParsing="false" onAction="#onZoomOutAction" text="-" />
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="150.0">
+               <content>
+                  <VBox>
+                     <children>
+                        <Label text="insert xine's button here" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onViewLocationAction" text="All Locations" />
+                  <Button mnemonicParsing="false" onAction="#onViewFavoritesAction" text="Favorites" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
          <left>
-            <Button mnemonicParsing="false" onAction="#moveLeft" text="&lt;" BorderPane.alignment="CENTER" />
+            <Label text="TerraTales" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </left>
          <right>
-            <Button mnemonicParsing="false" onAction="#moveRight" text="&gt;" BorderPane.alignment="CENTER" />
-         </right>
-         <bottom>
-            <Button mnemonicParsing="false" onAction="#moveDown" text="v" BorderPane.alignment="CENTER" />
-         </bottom>
-      </BorderPane>
-      <HBox spacing="20.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#zoomIn" text="+" />
-            <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
-         </children>
-      </HBox>
-      <ScrollPane>
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label text="ProfileName" />
+                  <Button mnemonicParsing="false" onAction="#onSignOutAction" text="Sign out">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-   </children>
-</VBox>
+            </HBox>
+         </right>
+         <padding>
+            <Insets left="100.0" right="100.0" top="10.0" />
+         </padding>
+      </BorderPane>
+   </top>
+</BorderPane>

@@ -40,7 +40,7 @@ public class LoginController {
             PauseTransition pause = new PauseTransition(Duration.seconds(1));
             pause.setOnFinished(e -> {
                 try {
-                    loginApp.changeScene(actionEvent,"main-menu.fxml");
+                    loginApp.changeScene(actionEvent,"map-view.fxml");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
