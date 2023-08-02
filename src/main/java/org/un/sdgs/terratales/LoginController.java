@@ -11,13 +11,18 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class MainController {
+public class LoginController {
     @FXML
     private Label prompt;
     @FXML
     private TextField username;
     @FXML
     private PasswordField password;
+
+    @FXML
+    private void initialize() {
+        UserDatabase.loadDefaultUsers();
+    }
 
     public void signIn(ActionEvent actionEvent) {
         Main loginApp = new Main();
