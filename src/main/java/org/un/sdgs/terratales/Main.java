@@ -28,6 +28,8 @@ public class Main extends Application {
         window.setScene(scene);
         window.show();
 
+        /* Loads Default Users*/
+        UserDatabase.loadDefaultUsers();
         /* Debugging LandDatabase Load*/
         LandDatabase.loadLocations();
     }
