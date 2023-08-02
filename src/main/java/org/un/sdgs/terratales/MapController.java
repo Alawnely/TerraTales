@@ -11,6 +11,7 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MapController extends Application {
     @FXML
@@ -50,10 +51,10 @@ public class MapController extends Application {
 
         // Perform map movement
         switch (movement) {
-            case "^": mapY -= 50; break;
-            case "<": mapX -= 50; break;
-            case ">": mapX += 50; break;
-            case "v": mapY += 50; break;
+            case "^" -> mapY -= 50;
+            case "<" -> mapX -= 50;
+            case ">" -> mapX += 50;
+            case "v" -> mapY += 50;
         }
 
         // Ensure map is within bounds
@@ -79,7 +80,7 @@ public class MapController extends Application {
 
     @FXML
     private void initialize() {
-        map = new Image(getClass().getResource("img/maplightmodegreen_expanded.png").toExternalForm());
+        map = new Image(Objects.requireNonNull(getClass().getResource("img/maplightmodegreen_expanded.png")).toExternalForm());
         mapX = 0;
         mapY = 0;
         mapZoomLevel = 1;

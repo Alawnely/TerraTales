@@ -1,10 +1,11 @@
 package org.un.sdgs.terratales;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.Objects;
 
 public class LocationViewTest {
 
@@ -28,7 +29,7 @@ public class LocationViewTest {
         changeLocation(locIndex);
     }
     @FXML
-    public void onClickNext(ActionEvent actionEvent) {
+    public void onClickNext() {
 
         if (locIndex+1 <= LandDatabase.locationList.size()-1) {
             locIndex+=1;
@@ -37,7 +38,7 @@ public class LocationViewTest {
         }
     }
     @FXML
-    public void onClickBack(ActionEvent actionEvent) {
+    public void onClickBack() {
         if (locIndex-1 <= LandDatabase.locationList.size()-1 && locIndex-1 > 0) {
             locIndex-=1;
             changeLocation(locIndex);
@@ -47,7 +48,7 @@ public class LocationViewTest {
 
     private void setLocationImage(String filename){
         //String filelocation = "src/main/resources/org/un/sdgs/terratales/LocationSRC";
-        Image image = new Image(getClass().getResource("LocationSRC/"+filename + ".jpg").toExternalForm());
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + filename + ".jpg")).toExternalForm());
         locationImage.setImage(image);
     }
 
