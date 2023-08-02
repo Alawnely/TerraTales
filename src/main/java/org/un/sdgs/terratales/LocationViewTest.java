@@ -27,8 +27,6 @@ public class LocationViewTest {
 
     @FXML
     private void initialize() {
-        /* Debugging LandDatabase Load*/
-        LandDatabase.loadLocations();
         /* Set Initial Index Value */
         locIndex = 0;
         changeLocation(locIndex);

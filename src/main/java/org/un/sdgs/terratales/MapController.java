@@ -2,11 +2,13 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -16,6 +18,8 @@ public class MapController {
     private ImageView mapImage;
     @FXML
     private Label userLabel;
+    @FXML
+    private VBox locationsVbox;
     private Image map;
     private int mapX, mapY, mapZoomLevel;
 
@@ -81,6 +85,17 @@ public class MapController {
         PixelReader mapPixels = map.getPixelReader();
         Image croppedMap = new WritableImage(mapPixels, mapX, mapY, width, height);
         mapImage.setImage(croppedMap);
+
+        // Show locations within the bounds
+        locationsVbox.getChildren().clear();
+        for (Location location : LandDatabase.locationList) {
+            int x = location.getX();
+            int y = location.getY();
+            if (x >= mapX && x <= (mapX+width) && y >= mapY && y <= (mapY+height)) {
+                Button button = createLocationButton(location.getName());
+                locationsVbox.getChildren().add(button);
+            }
+        }
     }
 
     @FXML
@@ -141,5 +156,16 @@ public class MapController {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    private Button createLocationButton(String locName) {
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + locName + ".jpg")).toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+
+        Button button = new Button(locName, imageView);
+        //button.setOnAction(mouseEvent -> changeLocation(locName));
+        return button;
     }
 }

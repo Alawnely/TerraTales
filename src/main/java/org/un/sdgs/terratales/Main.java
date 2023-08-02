@@ -27,6 +27,9 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         window.setScene(scene);
         window.show();
+
+        /* Debugging LandDatabase Load*/
+        LandDatabase.loadLocations();
     }
 
     public void changeScene(ActionEvent event, String fxml) throws IOException {

@@ -37,7 +37,7 @@
             </HBox>
             <ScrollPane prefHeight="150.0">
                <content>
-                  <VBox>
+                  <VBox fx:id="locationsVbox">
                      <children>
                         <Label text="insert xine's button here" />
                      </children>
