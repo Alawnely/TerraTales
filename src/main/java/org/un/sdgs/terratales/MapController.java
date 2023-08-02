@@ -136,7 +136,12 @@ public class MapController extends Application {
 
     @FXML
     private void onViewFavoritesAction(ActionEvent actionEvent) {
-
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"favorites-view.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @FXML

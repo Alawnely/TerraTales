@@ -1,11 +1,13 @@
 package org.un.sdgs.terratales;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class LocationViewTest {
@@ -41,11 +43,21 @@ public class LocationViewTest {
         }
     }
     @FXML
-    public void onClickBack() {
+    public void onClickPrevious() {
         if (locIndex-1 <= LandDatabase.locationList.size()-1 && locIndex-1 >= 0) {
             locIndex-=1;
             changeLocation(locIndex);
             System.out.println("Back: "+(locIndex));
+        }
+    }
+
+    @FXML
+    public void onBackPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"map-view.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
