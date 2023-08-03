@@ -32,7 +32,7 @@ public class MapController {
 
     @FXML
     private void initialize() {
-        userLabel.setText(UserDatabase.currentUser.getUsername());
+        userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
 
         mapX = 0;
         mapY = 0;

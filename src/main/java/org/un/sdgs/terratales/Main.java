@@ -22,7 +22,8 @@ public class Main extends Application {
         window = stage;
 
         /* Loads Default Users*/
-        UserDatabase.loadDefaultUsers();
+        UserDatabase userDatabase = new UserDatabase();
+        userDatabase.load();
         /* Debugging LandDatabase Load*/
         LandDatabase.loadLocations();
 
@@ -34,7 +35,7 @@ public class Main extends Application {
         window.show();
 
         /* Sets Current User to First Element of UserDatabase (TEMPORARY) */
-        UserDatabase.currentUser = UserDatabase.userList.get(0);
+        userDatabase.setCurrentUser(userDatabase.getUserList().get(0));
     }
 
     public FXMLLoader changeScene(ActionEvent event, String fxml) throws IOException {

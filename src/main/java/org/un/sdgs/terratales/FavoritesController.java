@@ -41,13 +41,13 @@ public class FavoritesController {
             Button button = createLocationButton(location);
             favoritesVbox.getChildren().add(button);
         }
-        userLabel.setText(UserDatabase.currentUser.getUsername());
+        userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
         setDropShadow();
 
     }
 
     private void setFavoritesList() {
-        favoritesList = UserDatabase.currentUser.getFavoritesList();
+        favoritesList = UserDatabase.getInstance().getCurrentUser().getFavoritesList();
     }
 
     private Button createLocationButton(Location location) {

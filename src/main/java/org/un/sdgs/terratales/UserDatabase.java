@@ -2,17 +2,24 @@ package org.un.sdgs.terratales;
 
 import java.util.ArrayList;
 
-public class UserDatabase {
+public class UserDatabase implements IDatabase {
 
-    public static ArrayList<User> userList = new ArrayList<>();
+    private static UserDatabase instance;
 
-    public static User currentUser;
+    private final ArrayList<User> userList;
+
+    private User currentUser;
+
+    public UserDatabase() {
+        instance = this;
+        userList = new ArrayList<>();
+    }
 
     /**
      * Loads Default + Admin Users
      */
 
-    public static void loadDefaultUsers(){
+    public void load(){
 
         /* Default Users */
         User user1 = new User("reese", "1234");
@@ -30,5 +37,21 @@ public class UserDatabase {
 
         /* Debugging */
         System.out.println(userList);
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
+    public static UserDatabase getInstance() {
+        return instance;
     }
 }

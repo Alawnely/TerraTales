@@ -37,7 +37,7 @@ public class LocationController {
         /* Set Initial Index Value */
         locIndex = 0;
         changeLocation(locIndex);
-        userLabel.setText(UserDatabase.currentUser.getUsername());
+        userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
         setDropShadow();
     }
     @FXML
@@ -94,11 +94,11 @@ public class LocationController {
         if (favoriteButton.getText().equalsIgnoreCase("Favorite")) {
             favoriteButton.setText("Unfavorite");
 
-            UserDatabase.currentUser.addFavorites(loc);
+            UserDatabase.getInstance().getCurrentUser().addFavorites(loc);
         } else if (favoriteButton.getText().equalsIgnoreCase("Unfavorite")) {
             favoriteButton.setText("Favorite");
 
-            UserDatabase.currentUser.removeFavorites(loc);
+            UserDatabase.getInstance().getCurrentUser().removeFavorites(loc);
         }
 
 
@@ -124,14 +124,14 @@ public class LocationController {
         }
 
         /* Checks If Location Is In Favorites List */
-        if (UserDatabase.currentUser.getFavoritesList().contains(loc)) {
+        if (UserDatabase.getInstance().getCurrentUser().getFavoritesList().contains(loc)) {
             favoriteButton.setText("Unfavorite");
         }
         else {
             favoriteButton.setText("Favorite");
         }
 
-        System.out.println(UserDatabase.currentUser.getFavoritesList());
+        System.out.println(UserDatabase.getInstance().getCurrentUser().getFavoritesList());
     }
 
     private void setDropShadow() {
