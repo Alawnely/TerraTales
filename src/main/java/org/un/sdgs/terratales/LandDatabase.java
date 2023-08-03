@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class LandDatabase {
 
     public static ArrayList<Location> locationList = new ArrayList<>();
+    public static Image mapImage;
 
     /* Loads Database From Text File*/
     public static void loadLocations() {
@@ -37,5 +38,7 @@ public class LandDatabase {
         } catch (FileNotFoundException e) {
             System.out.println("File does not Exist");
         }
+
+        mapImage = new Image(Objects.requireNonNull(LandDatabase.class.getResource("map/map_final.png")).toExternalForm());
     }
 }
