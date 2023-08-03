@@ -42,9 +42,10 @@ public class MapController {
     }
 
     private void moveMap(String movement, int relZoom) {
+        LandDatabase landDatabase = LandDatabase.getInstance();
         // Get original width and height values
-        float origWidth = (float) LandDatabase.mapImage.getWidth();
-        float origHeight = (float) LandDatabase.mapImage.getHeight();
+        float origWidth = (float) landDatabase.getMapImage().getWidth();
+        float origHeight = (float) landDatabase.getMapImage().getHeight();
 
         // Calculate previous width and height values
         int prevWidth = Math.round(origWidth/mapZoomLevel);
@@ -88,14 +89,14 @@ public class MapController {
 
         // Crop and set to ImageView
         // Source: https://stackoverflow.com/a/15587829
-        PixelReader mapPixels = LandDatabase.mapImage.getPixelReader();
+        PixelReader mapPixels = landDatabase.getMapImage().getPixelReader();
         Image croppedMap = new WritableImage(mapPixels, mapX, mapY, width, height);
         mapImage.setImage(croppedMap);
 
         // Show locations within the bounds
         locationsVbox.getChildren().clear();
         mapStack.getChildren().clear();
-        for (Location location : LandDatabase.locationList) {
+        for (Location location : landDatabase.getLocationList()) {
             int x = location.getX();
             int y = location.getY();
             if (x >= mapX && x <= (mapX+width) && y >= mapY && y <= (mapY+height)) {
@@ -104,8 +105,8 @@ public class MapController {
                 locationsVbox.getChildren().add(button);
 
                 // Create map markers for each visible location
-                double xRel = ((x-mapX)*mapZoomLevel*mapImage.getFitWidth()/LandDatabase.mapImage.getWidth());
-                double yRel = ((y-mapY)*mapZoomLevel*mapImage.getFitHeight()/LandDatabase.mapImage.getHeight());
+                double xRel = ((x-mapX)*mapZoomLevel*mapImage.getFitWidth()/landDatabase.getMapImage().getWidth());
+                double yRel = ((y-mapY)*mapZoomLevel*mapImage.getFitHeight()/landDatabase.getMapImage().getHeight());
                 //System.out.println(location.getName()+" > xRel = "+xRel+", yRel = "+yRel);
                 Circle marker = new Circle(3+(mapZoomLevel*2), Color.DARKGREEN);
                 marker.setLayoutX(xRel);
@@ -195,7 +196,7 @@ public class MapController {
             try {
                 FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
                 LocationController controller = fxmlLoader.getController();
-                controller.changeLocation(LandDatabase.locationList.indexOf(location), true);
+                controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

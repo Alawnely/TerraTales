@@ -25,7 +25,8 @@ public class Main extends Application {
         UserDatabase userDatabase = new UserDatabase();
         userDatabase.load();
         /* Debugging LandDatabase Load*/
-        LandDatabase.loadLocations();
+        LandDatabase landDatabase = new LandDatabase();
+        landDatabase.load();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("log-in.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

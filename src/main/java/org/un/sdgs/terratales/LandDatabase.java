@@ -10,13 +10,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class LandDatabase {
+public class LandDatabase implements IDatabase {
+    private static LandDatabase instance;
+    private final ArrayList<Location> locationList;
+    private Image mapImage;
 
-    public static ArrayList<Location> locationList = new ArrayList<>();
-    public static Image mapImage;
+    public LandDatabase() {
+        instance = this;
+        locationList = new ArrayList<>();
+    }
 
     /* Loads Database From Text File*/
-    public static void loadLocations() {
+    public void load() {
         try {
             String filename = Objects.requireNonNull(LandDatabase.class.getResource("locations.txt")).getFile();
             FileReader fileReader = new FileReader(URLDecoder.decode(filename, StandardCharsets.UTF_8));
@@ -40,5 +45,17 @@ public class LandDatabase {
         }
 
         mapImage = new Image(Objects.requireNonNull(LandDatabase.class.getResource("map/map_final.png")).toExternalForm());
+    }
+
+    public ArrayList<Location> getLocationList() {
+        return locationList;
+    }
+
+    public Image getMapImage() {
+        return mapImage;
+    }
+
+    public static LandDatabase getInstance() {
+        return instance;
     }
 }

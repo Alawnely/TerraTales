@@ -43,7 +43,7 @@ public class LocationController {
     @FXML
     public void onClickNext() {
 
-        if (locIndex+1 <= LandDatabase.locationList.size()-1) {
+        if (locIndex+1 <= LandDatabase.getInstance().getLocationList().size()-1) {
             locIndex+=1;
             changeLocation(locIndex);
             System.out.println("Next: "+(locIndex));
@@ -51,7 +51,7 @@ public class LocationController {
     }
     @FXML
     public void onClickPrevious() {
-        if (locIndex-1 <= LandDatabase.locationList.size()-1 && locIndex-1 >= 0) {
+        if (locIndex-1 <= LandDatabase.getInstance().getLocationList().size()-1 && locIndex-1 >= 0) {
             locIndex-=1;
             changeLocation(locIndex);
             System.out.println("Back: "+(locIndex));
@@ -110,7 +110,7 @@ public class LocationController {
     }
 
     public void changeLocation(int index, boolean peekOnly){
-        loc = LandDatabase.locationList.get(index);
+        loc = LandDatabase.getInstance().getLocationList().get(index);
 
         nameLabel.setText(loc.getName());
         placeLabel.setText(loc.getPlace());
