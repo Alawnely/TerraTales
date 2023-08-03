@@ -44,6 +44,8 @@ public class FavoritesController {
         userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
         setDropShadow();
 
+        System.out.println(UserDatabase.getInstance().getCurrentUser().getFavoritesList());
+
     }
 
     private void setFavoritesList() {

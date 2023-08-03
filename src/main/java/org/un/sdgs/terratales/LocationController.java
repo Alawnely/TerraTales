@@ -130,8 +130,6 @@ public class LocationController {
         else {
             favoriteButton.setText("Favorite");
         }
-
-        System.out.println(UserDatabase.getInstance().getCurrentUser().getFavoritesList());
     }
 
     private void setDropShadow() {
