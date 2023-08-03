@@ -5,13 +5,11 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class FavoritesController {
 
@@ -25,7 +23,7 @@ public class FavoritesController {
     ImageView locationImage;
     @FXML
     VBox favoritesVbox;
-    ArrayList<String> favoritesList;
+    ArrayList<Location> favoritesList;
     @FXML
     Label userLabel;
     @FXML
@@ -37,8 +35,8 @@ public class FavoritesController {
         setFavoritesList();
 
         favoritesVbox.getChildren().clear();
-        for (String locName : favoritesList){
-            Button button = createLocationButton(locName);
+        for (Location location : favoritesList){
+            Button button = createLocationButton(location);
             favoritesVbox.getChildren().add(button);
         }
         userLabel.setText(UserDatabase.currentUser.getUsername());
@@ -49,40 +47,28 @@ public class FavoritesController {
         favoritesList = UserDatabase.currentUser.getFavoritesList();
     }
 
-    private Button createLocationButton(String locName) {
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + locName + ".jpg")).toExternalForm());
-        ImageView imageView = new ImageView(image);
+    private Button createLocationButton(Location location) {
+        ImageView imageView = new ImageView(location.getImage());
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
 
-        Button button = new Button(locName, imageView);
+        Button button = new Button(location.getName(), imageView);
         button.setMaxWidth(Double.MAX_VALUE);
         button.setAlignment(Pos.CENTER_LEFT);
-        button.setOnAction(mouseEvent -> changeLocation(locName));
+        button.setOnAction(mouseEvent -> changeLocation(location));
         return button;
     }
 
-    private void changeLocation(String locName) {
-        for (Location location : LandDatabase.locationList) {
-            if (location.getName().equals(locName)){
+    private void changeLocation(Location location) {
+        nameLabel.setVisible(true);
+        placeLabel.setVisible(true);
+        descriptionLabel.setVisible(true);
+        locationImage.setVisible(true);
 
-                nameLabel.setVisible(true);
-                placeLabel.setVisible(true);
-                descriptionLabel.setVisible(true);
-                locationImage.setVisible(true);
-
-                nameLabel.setText(location.getName());
-                placeLabel.setText(location.getPlace());
-                descriptionLabel.setText(location.getDescription());
-                setLocationImage(location.getName());
-            }
-        }
-    }
-
-    private void setLocationImage(String filename){
-        //String filelocation = "src/main/resources/org/un/sdgs/terratales/LocationSRC";
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + filename + ".jpg")).toExternalForm());
-        locationImage.setImage(image);
+        nameLabel.setText(location.getName());
+        placeLabel.setText(location.getPlace());
+        descriptionLabel.setText(location.getDescription());
+        locationImage.setImage(location.getImage());
     }
 
     /* Change Screen To Map */

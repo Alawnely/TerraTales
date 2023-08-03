@@ -21,15 +21,15 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         window = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        window.setScene(scene);
-        window.show();
-
         /* Loads Default Users*/
         UserDatabase.loadDefaultUsers();
         /* Debugging LandDatabase Load*/
         LandDatabase.loadLocations();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        window.setScene(scene);
+        window.show();
 
         /* Sets Current User to First Element of UserDatabase (TEMPORARY) */
         UserDatabase.currentUser = UserDatabase.userList.get(0);

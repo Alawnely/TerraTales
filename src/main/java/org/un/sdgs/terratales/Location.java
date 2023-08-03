@@ -1,18 +1,22 @@
 package org.un.sdgs.terratales;
 
+import javafx.scene.image.Image;
+
 public class Location {
     private String name;
     private String place;
     private String description;
     private int x;
     private int y;
+    private Image image;
 
-    public Location(String name, String place, String description, int x, int y) {
+    public Location(String name, String place, String description, int x, int y, Image image) {
         this.name = name;
         this.place = place;
         this.description = description;
         this.x = x;
         this.y = y;
+        this.image = image;
     }
 
     public String getName() {
@@ -53,6 +57,14 @@ public class Location {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override

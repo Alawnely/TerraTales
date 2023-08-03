@@ -7,12 +7,12 @@ public class User {
     private String username;
     private String password;
 
-    private ArrayList<String> favoritesList;
+    private final ArrayList<Location> favoritesList;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        favoritesList = new ArrayList<String>();
+        favoritesList = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -31,17 +31,17 @@ public class User {
         this.password = password;
     }
 
-    public void addFavorites(String location) {
+    public void addFavorites(Location location) {
         favoritesList.add(location);
-        System.out.println(username+": added "+location);
+        System.out.println(username+": added "+location.getName());
     }
 
-    public void removeFavorites(String location) {
+    public void removeFavorites(Location location) {
         favoritesList.remove(location);
-        System.out.println(username+": removed " +location);
+        System.out.println(username+": removed " +location.getName());
     }
 
-    public ArrayList<String> getFavoritesList() {
+    public ArrayList<Location> getFavoritesList() {
         return favoritesList;
 
     }

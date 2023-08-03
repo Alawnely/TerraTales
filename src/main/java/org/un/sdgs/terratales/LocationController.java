@@ -4,11 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LocationController {
 
@@ -29,6 +27,7 @@ public class LocationController {
     @FXML
     Button nextButton;
 
+    private static Location loc;
     private static int locIndex;
 
     @FXML
@@ -92,42 +91,15 @@ public class LocationController {
         if (favoriteButton.getText().equalsIgnoreCase("Favorite")) {
             favoriteButton.setText("Unfavorite");
 
-            /* Check If Location Is Already Added */
-
-            if (UserDatabase.currentUser.getFavoritesList().isEmpty())
-            {
-                UserDatabase.currentUser.addFavorites(nameLabel.getText());
-            }
-
-            /* Loops Through Favorite List of Current User */
-            for (int i = 0; i < UserDatabase.currentUser.getFavoritesList().size(); i++) {
-                /* If Favorite List Does not Contains Location*/
-                if (!UserDatabase.currentUser.getFavoritesList().contains(nameLabel.getText())) {
-                    UserDatabase.currentUser.addFavorites(nameLabel.getText());
-                }
-            }
+            UserDatabase.currentUser.addFavorites(loc);
         } else if (favoriteButton.getText().equalsIgnoreCase("Unfavorite")) {
             favoriteButton.setText("Favorite");
 
-            /* Loops Through Favorite List of Current User */
-            for (int i = 0; i < UserDatabase.currentUser.getFavoritesList().size(); i++) {
-                /* If Favorite Contains Location*/
-                if (UserDatabase.currentUser.getFavoritesList().contains(nameLabel.getText())) {
-                    UserDatabase.currentUser.removeFavorites(nameLabel.getText());
-                }
-            }
+            UserDatabase.currentUser.removeFavorites(loc);
         }
 
 
 
-    }
-
-    private void setLocationImage(String filename){
-        //String filelocation = "src/main/resources/org/un/sdgs/terratales/LocationSRC";
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + filename + ".jpg")).toExternalForm());
-        locationImage.setImage(image);
-        locationImage.setPreserveRatio(false);
-        locationImage.setSmooth(true);
     }
 
     public void changeLocation(int index) {
@@ -135,11 +107,12 @@ public class LocationController {
     }
 
     public void changeLocation(int index, boolean peekOnly){
+        loc = LandDatabase.locationList.get(index);
 
-        nameLabel.setText(LandDatabase.locationList.get(index).getName());
-        placeLabel.setText(LandDatabase.locationList.get(index).getPlace());
-        descriptionLabel.setText(LandDatabase.locationList.get(index).getDescription());
-        setLocationImage(LandDatabase.locationList.get(index).getName());
+        nameLabel.setText(loc.getName());
+        placeLabel.setText(loc.getPlace());
+        descriptionLabel.setText(loc.getDescription());
+        locationImage.setImage(loc.getImage());
 
         /* Hide buttons if fxml is loaded from map view */
         if (peekOnly) {
@@ -148,15 +121,11 @@ public class LocationController {
         }
 
         /* Checks If Location Is In Favorites List */
-
-        Location loc = LandDatabase.locationList.get(index);
-        for (int i = 0; i < UserDatabase.currentUser.getFavoritesList().size(); i++) {
-            if (UserDatabase.currentUser.getFavoritesList().contains(loc.getName())) {
-                favoriteButton.setText("Unfavorite");
-            }
-            else {
-                favoriteButton.setText("Favorite");
-            }
+        if (UserDatabase.currentUser.getFavoritesList().contains(loc)) {
+            favoriteButton.setText("Unfavorite");
+        }
+        else {
+            favoriteButton.setText("Favorite");
         }
 
         System.out.println(UserDatabase.currentUser.getFavoritesList());

@@ -94,7 +94,7 @@ public class MapController {
             int x = location.getX();
             int y = location.getY();
             if (x >= mapX && x <= (mapX+width) && y >= mapY && y <= (mapY+height)) {
-                Button button = createLocationButton(location.getName());
+                Button button = createLocationButton(location);
                 locationsVbox.getChildren().add(button);
             }
         }
@@ -160,30 +160,24 @@ public class MapController {
         }
     }
 
-    private Button createLocationButton(String locName) {
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + locName + ".jpg")).toExternalForm());
-        ImageView imageView = new ImageView(image);
+    private Button createLocationButton(Location location) {
+        ImageView imageView = new ImageView(location.getImage());
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
 
-        Button button = new Button(locName, imageView);
+        Button button = new Button(location.getName(), imageView);
         button.setMaxWidth(Double.MAX_VALUE);
         button.setAlignment(Pos.CENTER_LEFT);
-        for (int i = 0; i < LandDatabase.locationList.size(); i++) {
-            if (LandDatabase.locationList.get(i).getName().equals(locName)) {
-                int finalI = i;
-                button.setOnAction(actionEvent -> {
-                    Main app = new Main();
-                    try {
-                        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-                        LocationController controller = fxmlLoader.getController();
-                        controller.changeLocation(finalI, true);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                });
+        button.setOnAction(actionEvent -> {
+            Main app = new Main();
+            try {
+                FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+                LocationController controller = fxmlLoader.getController();
+                controller.changeLocation(LandDatabase.locationList.indexOf(location), true);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
-        }
+        });
         return button;
     }
 }
