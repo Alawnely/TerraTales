@@ -175,7 +175,7 @@ public class MapController {
                     try {
                         FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
                         LocationController controller = fxmlLoader.getController();
-                        controller.changeLocation(finalI);
+                        controller.changeLocation(finalI, true);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
