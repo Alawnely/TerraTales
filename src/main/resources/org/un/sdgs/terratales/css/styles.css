@@ -6,7 +6,7 @@
 
 .button1{
     -fx-border-color: transparent;
-    -fx-border-width: 0;
+    -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
