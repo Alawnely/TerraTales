@@ -36,7 +36,7 @@ public class MapController {
     private void initialize() {
         userLabel.setText(UserDatabase.currentUser.getUsername());
 
-        map = new Image(Objects.requireNonNull(getClass().getResource("img/map_final.png")).toExternalForm());
+        map = new Image(Objects.requireNonNull(getClass().getResource("map/map_final.png")).toExternalForm());
         mapX = 0;
         mapY = 0;
         mapZoomLevel = 1;

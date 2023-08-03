@@ -88,10 +88,10 @@
          <children>
             <ImageView fx:id="locationImage" fitHeight="345.0" fitWidth="504.0" layoutX="276.0" layoutY="27.0" pickOnBounds="true">
                <image>
-                  <Image url="@LocationSRC/Amazon Rainforest.jpg" />
+                  <Image url="@locations/Amazon Rainforest.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="descriptionLabel" layoutX="275.0" layoutY="388.0" prefHeight="191.0" prefWidth="508.0" text="Lorem ipsum  JAKsdhkas sjfhkasjh skdjh fkasjd f asdkfhasf asdjkfhaslf sda" textFill="#326e2c" wrapText="true">
+            <Label fx:id="descriptionLabel" layoutX="275.0" layoutY="388.0" prefHeight="191.0" prefWidth="508.0" text="Description of Place" textFill="#326e2c" wrapText="true">
                <font>
                   <Font size="19.0" />
                </font>
