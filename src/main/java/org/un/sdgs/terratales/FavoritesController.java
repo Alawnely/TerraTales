@@ -25,9 +25,9 @@ public class FavoritesController {
     ImageView locationImage;
     @FXML
     VBox favoritesVbox;
+    ArrayList<String> favoritesList;
     @FXML
     Label userLabel;
-    ArrayList<String> favoritesList;
     @FXML
     private void initialize() {
         nameLabel.setVisible(false);
@@ -41,17 +41,8 @@ public class FavoritesController {
             Button button = createLocationButton(locName);
             favoritesVbox.getChildren().add(button);
         }
-        userLabel.setText(UserDatabase.currentUser.getUsername()+" Favorites");
+        userLabel.setText(UserDatabase.currentUser.getUsername());
 
-    }
-
-    public void onBackPress(ActionEvent actionEvent) {
-        Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"map-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
     private void setFavoritesList() {
@@ -90,5 +81,37 @@ public class FavoritesController {
         //String filelocation = "src/main/resources/org/un/sdgs/terratales/LocationSRC";
         Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + filename + ".jpg")).toExternalForm());
         locationImage.setImage(image);
+    }
+
+    /* Change Screen To Map */
+    @FXML
+    public void onMapPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"map-view.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    /* Change Screen To Favorites */
+    @FXML
+    public void onLocationPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"location-view.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    /* Change Screen To Login */
+    public void onSignoutPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"sign-in.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

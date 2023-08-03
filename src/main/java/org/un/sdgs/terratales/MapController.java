@@ -132,7 +132,7 @@ public class MapController {
     private void onViewLocationAction(ActionEvent actionEvent) {
         Main app = new Main();
         try {
-            app.changeScene(actionEvent,"location-view-test.fxml");
+            app.changeScene(actionEvent,"location-view.fxml");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

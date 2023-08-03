@@ -3,23 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.MapController">
-   <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="678.0" prefWidth="746.0" spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="mapImage" fitHeight="677.0" fitWidth="681.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </VBox>
-   </center>
+<BorderPane maxHeight="720.0" maxWidth="918.0" prefHeight="720.0" prefWidth="918.0"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.un.sdgs.terratales.LocationViewTest">
    <top>
       <BorderPane prefHeight="52.0" prefWidth="918.0" BorderPane.alignment="CENTER">
          <left>
@@ -34,7 +29,7 @@
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="userLabel" text="ProfileName" />
-                  <Button mnemonicParsing="false" onAction="#onSignOutAction">
+                  <Button mnemonicParsing="false" onAction="#onSignoutPress">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -60,25 +55,25 @@
    <left>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onViewLocationAction">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/place_inactive.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/map_active.png" />
+                        <Image url="@icons/place_active.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onViewFavoritesAction">
+            <Button mnemonicParsing="false" onAction="#onBackPress">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/map_inactive.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onFavoriteListPress">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -90,52 +85,52 @@
          </children>
       </VBox>
    </left>
-   <right>
-      <VBox alignment="CENTER" prefHeight="678.0" prefWidth="133.0" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="146.0" prefWidth="113.0">
-               <content>
-                  <Label text="insert xine's button here" />
-               </content>
-               <padding>
-                  <Insets bottom="20.0" top="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </ScrollPane>
-            <BorderPane prefHeight="100.0" prefWidth="100.0">
-               <top>
-                  <Button mnemonicParsing="false" onAction="#onMoveUpAction" text="^" BorderPane.alignment="CENTER" />
-               </top>
-               <left>
-                  <Button mnemonicParsing="false" onAction="#onMoveLeftAction" text="&lt;" BorderPane.alignment="CENTER" />
-               </left>
-               <right>
-                  <Button mnemonicParsing="false" onAction="#onMoveRightAction" text="&gt;" BorderPane.alignment="CENTER" />
-               </right>
-               <bottom>
-                  <Button mnemonicParsing="false" onAction="#onMoveDownAction" text="v" BorderPane.alignment="CENTER" />
-               </bottom>
+            <ImageView fx:id="locationImage" fitHeight="384.0" fitWidth="781.0" layoutX="22.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@LocationSRC/Amazon Rainforest.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="descriptionLabel" layoutX="22.0" layoutY="431.0" prefHeight="105.0" prefWidth="767.0" text="Lorem ipsum  JAKsdhkas sjfhkasjh skdjh fkasjd f asdkfhasf asdjkfhaslf sda" textFill="#326e2c" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-            </BorderPane>
-            <HBox alignment="CENTER" spacing="20.0">
+            </Label>
+            <Button fx:id="favoriteButton" layoutX="595.0" layoutY="326.0" mnemonicParsing="false" onAction="#onFavoriteClick" prefHeight="50.0" prefWidth="158.0" text="Favorite">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" text="Previous">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="630.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="158.0" text="Next">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <VBox layoutX="51.0" layoutY="59.0" prefHeight="234.0" prefWidth="706.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onZoomOutAction" text="-" />
-                  <Button mnemonicParsing="false" onAction="#onZoomInAction" text="+" />
+                  <Label fx:id="nameLabel" alignment="TOP_LEFT" prefHeight="60.0" prefWidth="677.0" text="Name of Place" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="41.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="placeLabel" alignment="TOP_LEFT" prefHeight="90.0" prefWidth="346.0" text="Location of Place" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
                </children>
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-            </HBox>
-            <VBox fx:id="locationsVbox" />
-            <HBox spacing="10.0" />
+            </VBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </right>
+      </AnchorPane>
+   </center>
 </BorderPane>

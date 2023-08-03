@@ -22,6 +22,8 @@ public class LocationViewTest {
     ImageView locationImage;
     @FXML
     Button favoriteButton;
+    @FXML
+    Label userLabel;
 
     private static int locIndex;
 
@@ -30,6 +32,7 @@ public class LocationViewTest {
         /* Set Initial Index Value */
         locIndex = 0;
         changeLocation(locIndex);
+        userLabel.setText(UserDatabase.currentUser.getUsername());
     }
     @FXML
     public void onClickNext() {
@@ -49,6 +52,7 @@ public class LocationViewTest {
         }
     }
 
+    /* Change Screen To Map */
     @FXML
     public void onBackPress(ActionEvent actionEvent) {
         Main app = new Main();
@@ -59,6 +63,26 @@ public class LocationViewTest {
         }
     }
 
+    /* Change Screen To Favorites */
+    @FXML
+    public void onFavoriteListPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"favorites-view.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    /* Change Screen To Login */
+    public void onSignoutPress(ActionEvent actionEvent) {
+        Main app = new Main();
+        try {
+            app.changeScene(actionEvent,"sign-in.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     @FXML
     public void onFavoriteClick() {
         if (favoriteButton.getText().equalsIgnoreCase("Favorite")) {
@@ -98,6 +122,8 @@ public class LocationViewTest {
         //String filelocation = "src/main/resources/org/un/sdgs/terratales/LocationSRC";
         Image image = new Image(Objects.requireNonNull(getClass().getResource("LocationSRC/" + filename + ".jpg")).toExternalForm());
         locationImage.setImage(image);
+        locationImage.setPreserveRatio(false);
+        locationImage.setSmooth(true);
     }
 
     private void changeLocation(int index){
