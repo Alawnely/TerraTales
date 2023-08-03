@@ -110,7 +110,7 @@ public class MapController {
                 double xRel = ((x-mapX)*mapZoomLevel*mapImage.getFitWidth()/map.getWidth());
                 double yRel = ((y-mapY)*mapZoomLevel*mapImage.getFitHeight()/map.getHeight());
                 //System.out.println(location.getName()+" > xRel = "+xRel+", yRel = "+yRel);
-                Circle marker = new Circle(5*(mapZoomLevel*0.5), Color.DARKGREEN);
+                Circle marker = new Circle(3+(mapZoomLevel*2), Color.DARKGREEN);
                 marker.setLayoutX(xRel);
                 marker.setLayoutY(yRel);
                 marker.setOnMouseClicked(mouseEvent -> button.fire());
