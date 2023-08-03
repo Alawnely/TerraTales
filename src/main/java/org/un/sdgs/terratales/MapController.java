@@ -3,6 +3,7 @@ package org.un.sdgs.terratales;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -167,6 +168,7 @@ public class MapController {
 
         Button button = new Button(locName, imageView);
         button.setMaxWidth(Double.MAX_VALUE);
+        button.setAlignment(Pos.CENTER_LEFT);
         for (int i = 0; i < LandDatabase.locationList.size(); i++) {
             if (LandDatabase.locationList.get(i).getName().equals(locName)) {
                 int finalI = i;
