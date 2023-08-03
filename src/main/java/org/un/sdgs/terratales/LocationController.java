@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
-public class LocationController {
+public class LocationController extends AController {
 
     @FXML
     Label nameLabel;
@@ -100,9 +100,6 @@ public class LocationController {
 
             UserDatabase.getInstance().getCurrentUser().removeFavorites(loc);
         }
-
-
-
     }
 
     public void changeLocation(int index) {

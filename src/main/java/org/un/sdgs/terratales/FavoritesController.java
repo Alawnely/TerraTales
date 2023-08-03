@@ -2,7 +2,6 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -13,7 +12,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FavoritesController {
+public class FavoritesController extends AController {
 
     @FXML
     Label nameLabel;
@@ -39,6 +38,7 @@ public class FavoritesController {
         favoritesVbox.getChildren().clear();
         for (Location location : favoritesList){
             Button button = createLocationButton(location);
+            button.setOnAction(mouseEvent -> changeLocation(location));
             favoritesVbox.getChildren().add(button);
         }
         userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
@@ -50,19 +50,6 @@ public class FavoritesController {
 
     private void setFavoritesList() {
         favoritesList = UserDatabase.getInstance().getCurrentUser().getFavoritesList();
-    }
-
-    private Button createLocationButton(Location location) {
-        ImageView imageView = new ImageView(location.getImage());
-        imageView.setFitWidth(20);
-        imageView.setFitHeight(20);
-
-        Button button = new Button(location.getName(), imageView);
-        button.setMaxWidth(Double.MAX_VALUE);
-        button.setAlignment(Pos.CENTER_LEFT);
-        button.getStyleClass().add("greenline");
-        button.setOnAction(mouseEvent -> changeLocation(location));
-        return button;
     }
 
     private void changeLocation(Location location) {

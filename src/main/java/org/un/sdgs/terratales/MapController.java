@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class MapController {
+public class MapController extends AController {
     @FXML
     private ImageView mapImage;
     @FXML
@@ -102,6 +102,16 @@ public class MapController {
             if (x >= mapX && x <= (mapX+width) && y >= mapY && y <= (mapY+height)) {
                 // Create buttons for each visible location
                 Button button = createLocationButton(location);
+                button.setOnAction(actionEvent -> {
+                    Main app = new Main();
+                    try {
+                        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+                        LocationController controller = fxmlLoader.getController();
+                        controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
                 locationsVbox.getChildren().add(button);
 
                 // Create map markers for each visible location
@@ -180,27 +190,5 @@ public class MapController {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-    }
-
-    private Button createLocationButton(Location location) {
-        ImageView imageView = new ImageView(location.getImage());
-        imageView.setFitWidth(20);
-        imageView.setFitHeight(20);
-
-        Button button = new Button(location.getName(), imageView);
-        button.setMaxWidth(Double.MAX_VALUE);
-        button.setAlignment(Pos.CENTER_LEFT);
-        button.getStyleClass().add("greenline");
-        button.setOnAction(actionEvent -> {
-            Main app = new Main();
-            try {
-                FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-                LocationController controller = fxmlLoader.getController();
-                controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        return button;
     }
 }
