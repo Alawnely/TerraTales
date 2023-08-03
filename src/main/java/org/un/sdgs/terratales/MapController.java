@@ -175,7 +175,7 @@ public class MapController {
     private void onSignOutAction(ActionEvent actionEvent) {
         Main main = new Main();
         try {
-            main.changeScene(actionEvent,"sign-in.fxml");
+            main.changeScene(actionEvent,"log-in.fxml");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

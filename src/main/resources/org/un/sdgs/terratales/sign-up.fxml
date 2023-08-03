@@ -13,28 +13,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.SignUpController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
-         <left>
+         <center>
             <Label text="TerraTales" BorderPane.alignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-         </left>
-         <right>
-            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onAction="#onSignoutPress" styleClass="button1" stylesheets="@css/styles.css">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </right>
+         </center>
          <padding>
             <Insets left="100.0" right="100.0" />
          </padding>
@@ -48,7 +36,7 @@
          <children>
             <ImageView fitHeight="653.0" fitWidth="887.0" layoutY="-1.0" pickOnBounds="true">
                <image>
-                  <Image url="@titleimage_.jpg" />
+                  <Image url="@title.jpg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="385.0" layoutX="185.0" layoutY="120.0" stroke="TRANSPARENT" strokeType="INSIDE" width="501.0" />

@@ -100,7 +100,7 @@ public class FavoritesController {
     public void onSignoutPress(ActionEvent actionEvent) {
         Main app = new Main();
         try {
-            app.changeScene(actionEvent,"sign-in.fxml");
+            app.changeScene(actionEvent,"log-in.fxml");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
