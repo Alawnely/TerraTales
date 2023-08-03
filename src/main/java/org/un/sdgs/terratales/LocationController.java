@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -36,6 +38,7 @@ public class LocationController {
         locIndex = 0;
         changeLocation(locIndex);
         userLabel.setText(UserDatabase.currentUser.getUsername());
+        setDropShadow();
     }
     @FXML
     public void onClickNext() {
@@ -129,6 +132,15 @@ public class LocationController {
         }
 
         System.out.println(UserDatabase.currentUser.getFavoritesList());
+    }
+
+    private void setDropShadow() {
+        DropShadow shadow = new DropShadow();
+        shadow.setOffsetX(5);
+        shadow.setOffsetY(5);
+        shadow.setColor(Color.rgb(40,40,0,0.9));
+        nameLabel.setEffect(shadow);
+        placeLabel.setEffect(shadow);
     }
 
 }
