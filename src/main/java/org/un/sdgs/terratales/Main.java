@@ -29,6 +29,8 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         window.setScene(scene);
+        window.setResizable(false);
+        window.setTitle("TerraTales");
         window.show();
 
         /* Sets Current User to First Element of UserDatabase (TEMPORARY) */
