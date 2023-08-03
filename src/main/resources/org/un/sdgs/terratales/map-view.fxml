@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -16,9 +17,10 @@
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="678.0" prefWidth="746.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="mapStack">
+            <StackPane maxHeight="615.0" maxWidth="615.0">
                <children>
                   <ImageView fx:id="mapImage" fitHeight="615.0" fitWidth="615.0" pickOnBounds="true" preserveRatio="true" />
+                  <AnchorPane fx:id="mapStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                </children>
             </StackPane>
          </children>

@@ -6,11 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -22,6 +27,8 @@ public class MapController {
     private Label userLabel;
     @FXML
     private VBox locationsVbox;
+    @FXML
+    private AnchorPane mapStack;
     private Image map;
     private int mapX, mapY, mapZoomLevel;
 
@@ -90,12 +97,29 @@ public class MapController {
 
         // Show locations within the bounds
         locationsVbox.getChildren().clear();
+        mapStack.getChildren().clear();
         for (Location location : LandDatabase.locationList) {
             int x = location.getX();
             int y = location.getY();
             if (x >= mapX && x <= (mapX+width) && y >= mapY && y <= (mapY+height)) {
+                // Create buttons for each visible location
                 Button button = createLocationButton(location);
                 locationsVbox.getChildren().add(button);
+
+                // Create map markers for each visible location
+                double xRel = ((x-mapX)*mapZoomLevel*mapImage.getFitWidth()/map.getWidth());
+                double yRel = ((y-mapY)*mapZoomLevel*mapImage.getFitHeight()/map.getHeight());
+                //System.out.println(location.getName()+" > xRel = "+xRel+", yRel = "+yRel);
+                Circle marker = new Circle(5, Color.DARKGREEN);
+                marker.setLayoutX(xRel);
+                marker.setLayoutY(yRel);
+                marker.setOnMouseClicked(mouseEvent -> button.fire());
+
+                Tooltip tooltip = new Tooltip(location.getName()+"\n("+x+", "+y+")");
+                tooltip.setShowDelay(Duration.millis(0));
+                Tooltip.install(marker, tooltip);
+
+                mapStack.getChildren().add(marker);
             }
         }
     }
