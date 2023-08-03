@@ -1,17 +1,15 @@
 package org.un.sdgs.terratales;
 
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class LoginController {
+public class SignupController {
     @FXML
     private Label prompt;
     @FXML
@@ -24,35 +22,43 @@ public class LoginController {
     }
 
     @FXML
-    public void onLogInPress(ActionEvent actionEvent) {
+    public void onSignUpPress(ActionEvent actionEvent) {
 
         String inputUser = username.getText();
         String inputPass = password.getText();
 
-        for (User user : UserDatabase.userList) {
-            if (user.getUsername().equals(inputUser) && user.getPassword().equals(inputPass)) {
-                UserDatabase.currentUser = user;
-                Main app = new Main();
-                try {
-                    app.changeScene(actionEvent, "map-view.fxml");
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
+        if (checkIfUserExists(inputUser)) {
+            prompt.setText("User already exists.");
+            prompt.setTextFill(Color.rgb(210, 39, 30));
+        } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
             prompt.setText("Enter your username & password!");
             prompt.setTextFill(Color.rgb(210, 39, 30));
-            } else {
-            prompt.setText("Wrong Username or Password!");
-            prompt.setTextFill(Color.rgb(210, 39, 30));
+        } else {
+            User newUser = new User(inputUser, inputPass);
+            UserDatabase.currentUser = newUser;
+            UserDatabase.userList.add(newUser);
+            Main app = new Main();
+            try {
+                app.changeScene(actionEvent, "map-view.fxml");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         }
     }
 
-    @FXML
-    public void onSignUpPress(ActionEvent actionEvent) {
+    private boolean checkIfUserExists(String inputUser) {
+        for (User user : UserDatabase.userList) {
+            if (user.getUsername().equalsIgnoreCase(inputUser)) {
+                return true;
+            }
+        }
+    return false;
+    }
+
+    public void onLogInPress (ActionEvent actionEvent) {
         Main app = new Main();
         try {
-            app.changeScene(actionEvent, "sign-up.fxml");
+            app.changeScene(actionEvent, "log-in.fxml");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
