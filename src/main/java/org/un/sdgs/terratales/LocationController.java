@@ -90,7 +90,7 @@ public class LocationController {
     @FXML
     public void onFavoriteClick() {
         if (favoriteButton.getText().equalsIgnoreCase("Favorite")) {
-            favoriteButton.setText("unFavorite");
+            favoriteButton.setText("Unfavorite");
 
             /* Check If Location Is Already Added */
 
@@ -106,7 +106,7 @@ public class LocationController {
                     UserDatabase.currentUser.addFavorites(nameLabel.getText());
                 }
             }
-        } else if (favoriteButton.getText().equalsIgnoreCase("unFavorite")) {
+        } else if (favoriteButton.getText().equalsIgnoreCase("Unfavorite")) {
             favoriteButton.setText("Favorite");
 
             /* Loops Through Favorite List of Current User */
