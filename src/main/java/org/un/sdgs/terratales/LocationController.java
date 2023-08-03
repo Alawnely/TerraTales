@@ -24,6 +24,10 @@ public class LocationController {
     Button favoriteButton;
     @FXML
     Label userLabel;
+    @FXML
+    Button previousButton;
+    @FXML
+    Button nextButton;
 
     private static int locIndex;
 
@@ -90,7 +94,7 @@ public class LocationController {
 
             /* Check If Location Is Already Added */
 
-            if (UserDatabase.currentUser.getFavoritesList().size() == 0)
+            if (UserDatabase.currentUser.getFavoritesList().isEmpty())
             {
                 UserDatabase.currentUser.addFavorites(nameLabel.getText());
             }
@@ -126,19 +130,29 @@ public class LocationController {
         locationImage.setSmooth(true);
     }
 
-    public void changeLocation(int index){
+    public void changeLocation(int index) {
+        changeLocation(index, false);
+    }
+
+    public void changeLocation(int index, boolean peekOnly){
 
         nameLabel.setText(LandDatabase.locationList.get(index).getName());
         placeLabel.setText(LandDatabase.locationList.get(index).getPlace());
         descriptionLabel.setText(LandDatabase.locationList.get(index).getDescription());
         setLocationImage(LandDatabase.locationList.get(index).getName());
 
+        /* Hide buttons if fxml is loaded from map view */
+        if (peekOnly) {
+            previousButton.setVisible(false);
+            nextButton.setVisible(false);
+        }
+
         /* Checks If Location Is In Favorites List */
 
         Location loc = LandDatabase.locationList.get(index);
         for (int i = 0; i < UserDatabase.currentUser.getFavoritesList().size(); i++) {
             if (UserDatabase.currentUser.getFavoritesList().contains(loc.getName())) {
-                favoriteButton.setText("unFavorite");
+                favoriteButton.setText("Unfavorite");
             }
             else {
                 favoriteButton.setText("Favorite");

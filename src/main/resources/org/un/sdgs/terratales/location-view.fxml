@@ -103,12 +103,12 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="22.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" text="Previous">
+            <Button fx:id="previousButton" layoutX="22.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" text="Previous">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="630.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="158.0" text="Next">
+            <Button fx:id="nextButton" layoutX="630.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="158.0" text="Next">
                <font>
                   <Font size="20.0" />
                </font>
