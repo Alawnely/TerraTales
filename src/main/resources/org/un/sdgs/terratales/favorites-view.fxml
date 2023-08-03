@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="720.0" maxWidth="918.0" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.FavoritesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.FavoritesController">
    <top>
-      <BorderPane prefHeight="52.0" prefWidth="918.0" BorderPane.alignment="CENTER">
+      <BorderPane BorderPane.alignment="CENTER">
          <left>
             <Label text="TerraTales" BorderPane.alignment="CENTER">
                <font>
@@ -43,7 +43,7 @@
             </HBox>
          </right>
          <padding>
-            <Insets left="100.0" right="100.0" top="10.0" />
+            <Insets left="100.0" right="100.0" />
          </padding>
          <BorderPane.margin>
             <Insets bottom="10.0" />
@@ -51,7 +51,7 @@
       </BorderPane>
    </top>
    <left>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#onLocationPress">
                <graphic>
@@ -101,7 +101,7 @@
             </Label>
             <VBox layoutX="303.0" layoutY="52.0" prefHeight="234.0" prefWidth="459.0">
                <children>
-                  <Label fx:id="nameLabel" alignment="TOP_LEFT" prefHeight="129.0" prefWidth="459.0" text="Amazon Rainforest Yeet" textFill="WHITE" wrapText="true">
+                  <Label fx:id="nameLabel" alignment="TOP_LEFT" prefHeight="129.0" prefWidth="459.0" text="Name of Place" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="System Bold" size="41.0" />
                      </font>
@@ -113,9 +113,9 @@
                   </Label>
                </children>
             </VBox>
-            <ScrollPane layoutX="21.0" layoutY="52.0" prefHeight="567.0" prefWidth="241.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="21.0" layoutY="52.0" prefHeight="567.0" prefWidth="241.0">
                <content>
-                  <VBox fx:id="favoritesVbox" prefHeight="658.0" prefWidth="235.0" />
+                  <VBox fx:id="favoritesVbox" />
                </content>
             </ScrollPane>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="14.0" prefHeight="27.0" prefWidth="237.0" text="Favorites">
@@ -126,4 +126,7 @@
          </children>
       </AnchorPane>
    </center>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 </BorderPane>

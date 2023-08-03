@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LocationViewTest {
+public class LocationController {
 
     @FXML
     Label nameLabel;
@@ -126,7 +126,7 @@ public class LocationViewTest {
         locationImage.setSmooth(true);
     }
 
-    private void changeLocation(int index){
+    public void changeLocation(int index){
 
         nameLabel.setText(LandDatabase.locationList.get(index).getName());
         placeLabel.setText(LandDatabase.locationList.get(index).getPlace());

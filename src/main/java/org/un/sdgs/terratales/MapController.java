@@ -2,6 +2,7 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,7 +28,7 @@ public class MapController {
     private void initialize() {
         userLabel.setText(UserDatabase.currentUser.getUsername());
 
-        map = new Image(Objects.requireNonNull(getClass().getResource("img/maplightmodegreen_expanded.png")).toExternalForm());
+        map = new Image(Objects.requireNonNull(getClass().getResource("img/map_final.png")).toExternalForm());
         mapX = 0;
         mapY = 0;
         mapZoomLevel = 1;
@@ -165,7 +166,22 @@ public class MapController {
         imageView.setFitHeight(20);
 
         Button button = new Button(locName, imageView);
-        //button.setOnAction(mouseEvent -> changeLocation(locName));
+        button.setMaxWidth(Double.MAX_VALUE);
+        for (int i = 0; i < LandDatabase.locationList.size(); i++) {
+            if (LandDatabase.locationList.get(i).getName().equals(locName)) {
+                int finalI = i;
+                button.setOnAction(actionEvent -> {
+                    Main app = new Main();
+                    try {
+                        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+                        LocationController controller = fxmlLoader.getController();
+                        controller.changeLocation(finalI);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+            }
+        }
         return button;
     }
 }

@@ -56,6 +56,7 @@ public class FavoritesController {
         imageView.setFitHeight(20);
 
         Button button = new Button(locName, imageView);
+        button.setMaxWidth(Double.MAX_VALUE);
         button.setOnAction(mouseEvent -> changeLocation(locName));
         return button;
     }
