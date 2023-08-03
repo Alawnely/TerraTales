@@ -58,6 +58,7 @@ public class FavoritesController {
         Button button = new Button(location.getName(), imageView);
         button.setMaxWidth(Double.MAX_VALUE);
         button.setAlignment(Pos.CENTER_LEFT);
+        button.getStyleClass().add("greenline");
         button.setOnAction(mouseEvent -> changeLocation(location));
         return button;
     }

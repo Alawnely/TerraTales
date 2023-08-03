@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.SignupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.SignupController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
@@ -50,9 +50,9 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="username" layoutX="349.0" layoutY="262.0" prefHeight="26.0" prefWidth="208.0" promptText="username" />
-            <PasswordField fx:id="password" layoutX="349.0" layoutY="313.0" onAction="#onSignUpPress" prefHeight="26.0" prefWidth="208.0" promptText="password" />
-            <Button layoutX="317.0" layoutY="416.0" mnemonicParsing="false" onAction="#onSignUpPress" prefHeight="26.0" prefWidth="238.0" text="Sign Up" />
+            <TextField fx:id="username" layoutX="349.0" layoutY="262.0" prefHeight="26.0" prefWidth="208.0" promptText="username" styleClass="lion" />
+            <PasswordField fx:id="password" layoutX="349.0" layoutY="313.0" onAction="#onSignUpPress" prefHeight="26.0" prefWidth="208.0" promptText="password" styleClass="lion" />
+            <Button layoutX="317.0" layoutY="416.0" mnemonicParsing="false" onAction="#onSignUpPress" prefHeight="26.0" prefWidth="238.0" styleClass="green" text="Sign Up" />
             <Label alignment="CENTER" layoutX="328.0" layoutY="461.0" text="Already have an account?" textFill="#848484">
                <font>
                   <Font size="13.0" />

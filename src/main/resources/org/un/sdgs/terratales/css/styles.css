@@ -118,15 +118,15 @@
     -fx-background-color:
             rgba(0,0,0,0.08),
             linear-gradient(#9a9a9a, #909090),
-            linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);
+            linear-gradient(#f2f2f2 0%, #ececec 50%, #f3f3f3 51%, white 100%);
     -fx-background-insets: 0 0 -1 0,0,1;
     -fx-background-radius: 5,5,4;
-    -fx-padding: 3 30 3 30;
+    -fx-padding: 3 10 3 10;
     -fx-text-fill: #242d35;
     -fx-font-size: 14px;
 }
 
-.lion:hover {
+.lion:focused {
     -fx-background-color:
             linear-gradient(#f2f2f2, #d6d6d6),
             linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
@@ -281,16 +281,16 @@
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
-.redline{
+.greenline{
     -fx-text-fill: red;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
-   -fx-border-color:red;
+   -fx-border-color:darkseagreen;
    -fx-background-color:null;
 }
 
-.redline:hover{
-  -fx-background-color: red;
+.greenline:hover{
+  -fx-background-color: darkseagreen;
   -fx-text-fill:white;
   -fx-font-weight:bold;
 

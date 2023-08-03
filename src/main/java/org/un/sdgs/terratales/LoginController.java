@@ -38,7 +38,7 @@ public class LoginController {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-            } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
+            } else if (username.getText().isBlank() || password.getText().isBlank()) {
             prompt.setText("Enter your username & password!");
             prompt.setTextFill(Color.rgb(210, 39, 30));
             } else {
