@@ -13,7 +13,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LoginController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
@@ -51,8 +52,8 @@
                </font>
             </Label>
             <TextField fx:id="username" layoutX="349.0" layoutY="262.0" prefHeight="26.0" prefWidth="208.0" promptText="username" />
-            <PasswordField fx:id="password" onAction="#signIn" layoutX="349.0" layoutY="313.0" prefHeight="26.0" prefWidth="208.0" promptText="password" />
-            <Button onAction="#signIn" layoutX="317.0" layoutY="416.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Login" />
+            <PasswordField fx:id="password" onAction="#onLogInPress" layoutX="349.0" layoutY="313.0" prefHeight="26.0" prefWidth="208.0" promptText="password" />
+            <Button onAction="#onLogInPress" layoutX="317.0" layoutY="416.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Login" />
             <Label alignment="CENTER" layoutX="328.0" layoutY="461.0" text="Don't have an account?" textFill="#848484">
                <font>
                   <Font size="13.0" />

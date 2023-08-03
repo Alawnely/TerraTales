@@ -23,31 +23,54 @@ public class LoginController {
     private void initialize() {
     }
 
-    public void signIn(ActionEvent actionEvent) {
-        //TODO: Update Login Logout According To UserDatabase
-        //TODO: Add Sign In and Sign Out UI
-        //TODO: Add Logout (User must be signed in to access the app)
+    @FXML
+    public void onLogInPress(ActionEvent actionEvent) {
 
-        Main loginApp = new Main();
-        if (username.getText().equals("admin")
-                && password.getText().equals("1234")) {
-            prompt.setText("Login SUCCESS! Access Granted ...");
-            prompt.setTextFill(Color.rgb(21, 117, 84));
-            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-            pause.setOnFinished(e -> {
+        String inputUser = username.getText();
+        String inputPass = password.getText();
+
+        for (User user : UserDatabase.userList) {
+            if (user.getUsername().equals(inputUser) && user.getPassword().equals(inputPass)) {
+                UserDatabase.currentUser = user;
+                Main app = new Main();
                 try {
-                    loginApp.changeScene(actionEvent,"map-view.fxml");
+                    app.changeScene(actionEvent, "map-view.fxml");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-            });
-            pause.play();
-        } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
+            } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
             prompt.setText("Enter your username & password!");
             prompt.setTextFill(Color.rgb(210, 39, 30));
-        } else {
+            } else {
             prompt.setText("Wrong Username or Password!");
             prompt.setTextFill(Color.rgb(210, 39, 30));
+            }
         }
     }
 }
+//    public void signIn(ActionEvent actionEvent) {
+//        //TODO: Update Login Logout According To UserDatabase
+//        //TODO: Add Sign In and Sign Out UI
+//        //TODO: Add Logout (User must be signed in to access the app)
+//
+//        Main loginApp = new Main();
+//        if (username.getText().equals("admin")
+//                && password.getText().equals("1234")) {
+//            prompt.setText("Login SUCCESS! Access Granted ...");
+//            prompt.setTextFill(Color.rgb(21, 117, 84));
+//            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+//            pause.setOnFinished(e -> {
+//                try {
+//                    loginApp.changeScene(actionEvent,"map-view.fxml");
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            });
+//            pause.play();
+//        } else if (username.getText().isEmpty() || password.getText().isEmpty()) {
+//            prompt.setText("Enter your username & password!");
+//            prompt.setTextFill(Color.rgb(210, 39, 30));
+//        } else {
+//            prompt.setText("Wrong Username or Password!");
+//            prompt.setTextFill(Color.rgb(210, 39, 30));
+//        }
