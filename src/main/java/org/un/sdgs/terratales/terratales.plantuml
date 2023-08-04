@@ -2,27 +2,41 @@
 
 title __TERRATALES's Class Diagram__\n
 
-      class org.un.sdgs.terratales.FavoritesController {
-          ~ descriptionLabel : Label
-          ~ favoritesList : ArrayList<Location>
-          ~ favoritesVbox : VBox
-          ~ locationImage : ImageView
-          ~ nameLabel : Label
-          ~ placeLabel : Label
-          ~ userLabel : Label
-          + onLocationPress()
-          + onMapPress()
-          + onSignoutPress()
+      abstract class org.un.sdgs.terratales.AMainController {
+          + password : PasswordField
+          + prompt : Label
+          + username : TextField
+          {abstract} + onLogInPress()
+          {abstract} + onSignUpPress()
+      }
+
+      abstract class org.un.sdgs.terratales.AMenuController {
+          + createLocationButton()
+          + onSignOutPress()
+          {abstract} + onViewFavoritesAction()
+          {abstract} + onViewLocationAction()
+          {abstract} + onViewMapAction()
+      }
+
+      class org.un.sdgs.terratales.FavoritesMenuController {
+          - descriptionLabel : Label
+          - favoritesVbox : VBox
+          - locationImage : ImageView
+          - nameLabel : Label
+          - placeLabel : Label
+          - userLabel : Label
+          + onViewFavoritesAction()
+          + onViewLocationAction()
+          + onViewMapAction()
           - changeLocation()
-          - createLocationButton()
           - initialize()
           - setDropShadow()
-          - setFavoritesList()
       }
 
       interface org.un.sdgs.terratales.IDatabase {
           {abstract} + load()
       }
+
 
       class org.un.sdgs.terratales.LandDatabase {
           {static} - instance : LandDatabase
@@ -53,51 +67,56 @@ title __TERRATALES's Class Diagram__\n
           + setImage()
           + setName()
           + setPlace()
-          + setX()
-          + setY()
           + toString()
       }
 
-      class org.un.sdgs.terratales.LocationController {
-          ~ descriptionLabel : Label
-          ~ favoriteButton : Button
-          ~ locationImage : ImageView
-          ~ nameLabel : Label
-          ~ nextButton : Button
-          ~ placeLabel : Label
-          ~ previousButton : Button
-          ~ userLabel : Label
+      class org.un.sdgs.terratales.LocationMenuController {
+          - descriptionField : TextArea
+          - descriptionLabel : Label
+          - editButton : Button
+          - favoriteButton : Button
           {static} - loc : Location
           {static} - locIndex : int
+          - locationImage : ImageView
+          - nameField : TextField
+          - nameLabel : Label
+          - nextButton : Button
+          - placeField : TextField
+          - placeLabel : Label
+          - previousButton : Button
+          - userLabel : Label
           + changeLocation()
           + changeLocation()
-          + onBackPress()
+          + editLocation()
+          + loadLocationEdit()
+          + onChangePicturePress()
           + onClickNext()
           + onClickPrevious()
+          + onEditClick()
           + onFavoriteClick()
-          + onFavoriteListPress()
-          + onSignoutPress()
+          + onViewFavoritesAction()
+          + onViewLocationAction()
+          + onViewMapAction()
           - initialize()
           - setDropShadow()
       }
 
+
       class org.un.sdgs.terratales.LoginController {
-          - password : PasswordField
-          - prompt : Label
-          - username : TextField
           + onLogInPress()
           + onSignUpPress()
-          - initialize()
       }
 
+
       class org.un.sdgs.terratales.Main {
-          {static} ~ window : Stage
+          {static} - window : Stage
           + changeScene()
+          {static} + getWindow()
           {static} + main()
           + start()
       }
 
-      class org.un.sdgs.terratales.MapController {
+      class org.un.sdgs.terratales.MapMenuController {
           - locationsVbox : VBox
           - mapImage : ImageView
           - mapStack : AnchorPane
@@ -105,28 +124,23 @@ title __TERRATALES's Class Diagram__\n
           - mapY : int
           - mapZoomLevel : int
           - userLabel : Label
-          - createLocationButton()
+          + onViewFavoritesAction()
+          + onViewLocationAction()
+          + onViewMapAction()
           - initialize()
           - moveMap()
           - onMoveDownAction()
           - onMoveLeftAction()
           - onMoveRightAction()
           - onMoveUpAction()
-          - onSignOutAction()
-          - onViewFavoritesAction()
-          - onViewLocationAction()
           - onZoomInAction()
           - onZoomOutAction()
       }
 
       class org.un.sdgs.terratales.SignupController {
-          - password : PasswordField
-          - prompt : Label
-          - username : TextField
           + onLogInPress()
           + onSignUpPress()
           - checkIfUserExists()
-          - initialize()
       }
 
       class org.un.sdgs.terratales.User {
@@ -139,11 +153,8 @@ title __TERRATALES's Class Diagram__\n
           + getPassword()
           + getUsername()
           + removeFavorites()
-          + setPassword()
-          + setUsername()
           + toString()
       }
-
 
       class org.un.sdgs.terratales.UserDatabase {
           {static} - instance : UserDatabase
@@ -156,8 +167,14 @@ title __TERRATALES's Class Diagram__\n
           + setCurrentUser()
       }
 
+
+  org.un.sdgs.terratales.FavoritesMenuController -up-|> org.un.sdgs.terratales.AMenuController
   org.un.sdgs.terratales.LandDatabase .up.|> org.un.sdgs.terratales.IDatabase
+  org.un.sdgs.terratales.LocationMenuController -up-|> org.un.sdgs.terratales.AMenuController
+  org.un.sdgs.terratales.LoginController -up-|> org.un.sdgs.terratales.AMainController
   org.un.sdgs.terratales.Main -up-|> javafx.application.Application
+  org.un.sdgs.terratales.MapMenuController -up-|> org.un.sdgs.terratales.AMenuController
+  org.un.sdgs.terratales.SignupController -up-|> org.un.sdgs.terratales.AMainController
   org.un.sdgs.terratales.UserDatabase .up.|> org.un.sdgs.terratales.IDatabase
   org.un.sdgs.terratales.UserDatabase o-- org.un.sdgs.terratales.User : currentUser
 
