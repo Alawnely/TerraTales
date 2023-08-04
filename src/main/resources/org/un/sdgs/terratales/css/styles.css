@@ -1,3 +1,7 @@
+.root {
+    -fx-background-color:#edeae6;
+}
+
 .primary-background{
     -fx-background-color:#8EEBBD;
     -fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 10, 0, 4, 4);

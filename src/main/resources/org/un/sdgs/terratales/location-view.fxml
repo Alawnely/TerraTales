@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="org.un.sdgs.terratales.LocationController">
+<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <left>
-            <Label text="TerraTales" textFill="#141f12" BorderPane.alignment="CENTER">
+            <Label text="TerraTales" textFill="#112c17" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Cooper Black" size="30.0" />
                </font>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets left="-20.0" top="15.0" />
                </BorderPane.margin>
             </Label>
          </left>
@@ -38,6 +38,12 @@
                      </ImageView>
                   </graphic>
                </Button>
+               <BorderPane.margin>
+                  <Insets right="-80.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </HBox>
          </right>
          <padding>
@@ -78,7 +84,7 @@
          <ImageView fx:id="locationImage" fitHeight="384.0" fitWidth="781.0" layoutX="22.0" layoutY="27.0" pickOnBounds="true">
             <Image url="@locations/Amazon Rainforest.jpg" />
          </ImageView>
-         <Label fx:id="descriptionLabel" layoutX="22.0" layoutY="431.0" prefHeight="105.0" prefWidth="767.0" text="Description of Place" textFill="#326e2c" wrapText="true">
+         <Label fx:id="descriptionLabel" layoutX="22.0" layoutY="431.0" prefHeight="106.0" prefWidth="778.0" text="Description of Place" textFill="#326e2c" wrapText="true">
             <font>
                <Font size="19.0" />
             </font>
@@ -88,7 +94,7 @@
          </Label>
          <Button fx:id="favoriteButton" layoutX="595.0" layoutY="326.0" mnemonicParsing="false" onAction="#onFavoriteClick" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Favorite">
             <font>
-               <Font size="20.0" />
+               <Font name="Consolas" size="18.0" />
             </font>
          </Button>
          <Button fx:id="previousButton" layoutX="22.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Previous">
