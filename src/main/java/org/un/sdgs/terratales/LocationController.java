@@ -47,7 +47,7 @@ public class LocationController extends AController {
     @FXML
     public void onClickPrevious() {
         int size = LandDatabase.getInstance().getLocationList().size();
-        locIndex = ((locIndex+1) % size + size) % size;
+        locIndex = ((locIndex-1) % size + size) % size;
         changeLocation(locIndex);
         System.out.println("Back: "+(locIndex));
     }
