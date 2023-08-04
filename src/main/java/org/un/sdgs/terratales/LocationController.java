@@ -40,19 +40,16 @@ public class LocationController extends AController {
     }
     @FXML
     public void onClickNext() {
-        if (locIndex+1 <= LandDatabase.getInstance().getLocationList().size()-1) {
-            locIndex+=1;
-            changeLocation(locIndex);
-            System.out.println("Next: "+(locIndex));
-        }
+        locIndex = (locIndex+1) % LandDatabase.getInstance().getLocationList().size();
+        changeLocation(locIndex);
+        System.out.println("Next: "+(locIndex));
     }
     @FXML
     public void onClickPrevious() {
-        if (locIndex-1 <= LandDatabase.getInstance().getLocationList().size()-1 && locIndex-1 >= 0) {
-            locIndex-=1;
-            changeLocation(locIndex);
-            System.out.println("Back: "+(locIndex));
-        }
+        int size = LandDatabase.getInstance().getLocationList().size();
+        locIndex = ((locIndex+1) % size + size) % size;
+        changeLocation(locIndex);
+        System.out.println("Back: "+(locIndex));
     }
 
     /* Change Screen To Map */
