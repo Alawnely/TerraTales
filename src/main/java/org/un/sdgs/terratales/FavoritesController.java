@@ -2,6 +2,7 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -71,10 +72,13 @@ public class FavoritesController extends AController {
     @FXML
     public void onLocationPress(ActionEvent actionEvent) {
         Main app = new Main();
-        app.changeScene(actionEvent,"location-view.fxml");
+        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+        LocationController controller = fxmlLoader.getController();
+        controller.changeLocation(0);
     }
 
     /* Change Screen To Login */
+    @FXML
     public void onSignoutPress(ActionEvent actionEvent) {
         Main app = new Main();
         app.changeScene(actionEvent,"log-in.fxml");

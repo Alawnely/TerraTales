@@ -158,7 +158,9 @@ public class MapController extends AController {
     @FXML
     private void onViewLocationAction(ActionEvent actionEvent) {
         Main app = new Main();
-        app.changeScene(actionEvent,"location-view.fxml");
+        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+        LocationController controller = fxmlLoader.getController();
+        controller.changeLocation(0);
     }
 
     @FXML

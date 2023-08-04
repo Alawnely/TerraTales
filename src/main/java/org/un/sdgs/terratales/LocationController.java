@@ -2,11 +2,19 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 
 public class LocationController extends AController {
 
@@ -27,16 +35,31 @@ public class LocationController extends AController {
     @FXML
     private Button nextButton;
 
+    @FXML
+    private Button editButton;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField placeField;
+    @FXML
+    private TextArea descriptionField;
+
     private static Location loc;
     private static int locIndex;
 
     @FXML
     private void initialize() {
         /* Set Initial Index Value */
-        locIndex = 0;
-        changeLocation(locIndex);
-        userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
-        setDropShadow();
+        try {
+            setDropShadow();
+            locIndex = 0;
+
+            String username = UserDatabase.getInstance().getCurrentUser().getUsername();
+            userLabel.setText(username);
+            if (username.equals("admin")) {
+                editButton.setVisible(true);
+            }
+        } catch (NullPointerException ignored) { }
     }
     @FXML
     public void onClickNext() {
@@ -117,9 +140,72 @@ public class LocationController extends AController {
         DropShadow shadow = new DropShadow();
         shadow.setOffsetX(5);
         shadow.setOffsetY(5);
-        shadow.setColor(Color.rgb(40,40,0,0.9));
+        shadow.setColor(Color.rgb(40, 40, 0, 0.9));
         nameLabel.setEffect(shadow);
         placeLabel.setEffect(shadow);
     }
 
+    @FXML
+    public void onEditClick(ActionEvent actionEvent) throws IOException {
+        System.out.println("Editing location: "+loc.getName());
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("location-edit.fxml"));
+        DialogPane dialogPane = fxmlLoader.load();
+        dialog.setDialogPane(dialogPane);
+        dialog.setTitle("Edit Location");
+        dialog.setResizable(false);
+        dialog.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+
+        LocationController controller = fxmlLoader.getController();
+        System.out.println(locIndex);
+        controller.loadLocationEdit(locIndex);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.APPLY) {
+            controller.editLocation(actionEvent);
+            changeLocation(locIndex);
+        }
+    }
+
+    public void loadLocationEdit(int index) {
+        loc = LandDatabase.getInstance().getLocationList().get(index);
+        locIndex = index;
+
+        nameField.setText(loc.getName());
+        placeField.setText(loc.getPlace());
+        descriptionField.setText(loc.getDescription());
+        locationImage.setImage(loc.getImage());
+    }
+
+    @FXML
+    public void onChangePicturePress(ActionEvent actionEvent) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.bmp", "*.gif", "*.jpeg", "*.jpg", "*.png")
+        );
+        fileChooser.setInitialDirectory(new File(Objects.requireNonNull(getClass().getResource("locations")).getPath()));
+        File file = fileChooser.showOpenDialog(((Node)actionEvent.getSource()).getScene().getWindow());
+        if (file != null) {
+            locationImage.setImage(new Image(file.getCanonicalPath()));
+        }
+    }
+
+    public void editLocation(ActionEvent actionEvent) {
+        String name = nameField.getText();
+        if (name.isBlank()) {
+            System.out.println("New location name invalid");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Location name cannot be blank");
+            alert.setHeaderText("Invalid name");
+            alert.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            alert.getDialogPane().getStylesheets().addAll(((Node)actionEvent.getSource()).getScene().getStylesheets());
+            alert.show();
+        } else {
+            loc.setName(name);
+        }
+        loc.setPlace(placeField.getText());
+        loc.setDescription(descriptionField.getText());
+        loc.setImage(locationImage.getImage());
+    }
 }

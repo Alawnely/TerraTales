@@ -119,6 +119,11 @@
                </font>
             </Label>
          </VBox>
+         <Button fx:id="editButton" layoutX="414.0" layoutY="326.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Edit Location" visible="false">
+            <font>
+               <Font name="Consolas" size="18.0" />
+            </font>
+         </Button>
       </AnchorPane>
    </center>
    <padding>
