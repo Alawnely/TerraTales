@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationController">
+<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/"
+            fx:controller="org.un.sdgs.terratales.LocationController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <left>
@@ -23,22 +24,18 @@
          </left>
          <right>
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="userLabel" text="ProfileName" />
-                  <Button mnemonicParsing="false" onAction="#onSignoutPress" styleClass="button1">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/logout_active.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
+               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true"/>
+               <Label fx:id="userLabel" text="ProfileName"/>
+               <Button mnemonicParsing="false" onAction="#onSignoutPress" styleClass="button1">
+                  <HBox.margin>
+                     <Insets left="20.0"/>
+                  </HBox.margin>
+                  <graphic>
+                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@icons/logout_active.png"/>
+                     </ImageView>
+                  </graphic>
+               </Button>
             </HBox>
          </right>
          <padding>
@@ -51,83 +48,76 @@
    </top>
    <left>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" styleClass="button1">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/place_active.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#onBackPress" styleClass="button1">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/map_inactive.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#onFavoriteListPress" styleClass="button1">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/bookmark_inactive.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
+         <Button mnemonicParsing="false" styleClass="button1">
+            <graphic>
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@icons/place_active.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#onBackPress" styleClass="button1">
+            <graphic>
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@icons/map_inactive.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#onFavoriteListPress" styleClass="button1">
+            <graphic>
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@icons/bookmark_inactive.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
       </VBox>
    </left>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="locationImage" fitHeight="384.0" fitWidth="781.0" layoutX="22.0" layoutY="27.0" pickOnBounds="true">
-               <image>
-                  <Image url="@locations/Amazon Rainforest.jpg" />
-               </image>
-            </ImageView>
-            <Label fx:id="descriptionLabel" layoutX="22.0" layoutY="431.0" prefHeight="105.0" prefWidth="767.0" text="Description of Place" textFill="#326e2c" wrapText="true">
+         <ImageView fx:id="locationImage" fitHeight="384.0" fitWidth="781.0" layoutX="22.0" layoutY="27.0"
+                    pickOnBounds="true">
+            <Image url="@locations/Amazon Rainforest.jpg"/>
+         </ImageView>
+         <Label fx:id="descriptionLabel" layoutX="22.0" layoutY="431.0" prefHeight="105.0" prefWidth="767.0"
+                text="Description of Place" textFill="#326e2c" wrapText="true">
+            <font>
+               <Font size="19.0"/>
+            </font>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+         </Label>
+         <Button fx:id="favoriteButton" layoutX="595.0" layoutY="326.0" mnemonicParsing="false"
+                 onAction="#onFavoriteClick" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Favorite">
+            <font>
+               <Font size="20.0"/>
+            </font>
+         </Button>
+         <Button fx:id="previousButton" layoutX="22.0" layoutY="559.0" mnemonicParsing="false"
+                 onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Previous">
+            <font>
+               <Font size="20.0"/>
+            </font>
+         </Button>
+         <Button fx:id="nextButton" layoutX="630.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickNext"
+                 prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Next">
+            <font>
+               <Font size="20.0"/>
+            </font>
+         </Button>
+         <VBox layoutX="51.0" layoutY="59.0" prefHeight="234.0" prefWidth="706.0">
+            <Label fx:id="nameLabel" alignment="TOP_LEFT" prefHeight="60.0" prefWidth="677.0" text="Name of Place"
+                   textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="41.0"/>
                </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
             </Label>
-            <Button fx:id="favoriteButton" layoutX="595.0" layoutY="326.0" mnemonicParsing="false" onAction="#onFavoriteClick" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Favorite">
+            <Label fx:id="placeLabel" alignment="TOP_LEFT" prefHeight="90.0" prefWidth="346.0"
+                   text="Location of Place" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold Italic" size="25.0"/>
                </font>
-            </Button>
-            <Button fx:id="previousButton" layoutX="22.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickPrevious" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Previous">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="nextButton" layoutX="630.0" layoutY="559.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="158.0" styleClass="glass" text="Next">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <VBox layoutX="51.0" layoutY="59.0" prefHeight="234.0" prefWidth="706.0">
-               <children>
-                  <Label fx:id="nameLabel" alignment="TOP_LEFT" prefHeight="60.0" prefWidth="677.0" text="Name of Place" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="41.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="placeLabel" alignment="TOP_LEFT" prefHeight="90.0" prefWidth="346.0" text="Location of Place" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold Italic" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-         </children>
+            </Label>
+         </VBox>
       </AnchorPane>
    </center>
    <padding>
