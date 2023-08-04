@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-    static Stage window;
+    private static Stage window;
 
     public static void main(String[] args) {
         launch();
@@ -39,13 +39,22 @@ public class Main extends Application {
         userDatabase.setCurrentUser(userDatabase.getUserList().get(0));
     }
 
-    public FXMLLoader changeScene(ActionEvent event, String fxml) throws IOException {
+    public FXMLLoader changeScene(ActionEvent event, String fxml) {
         /* Change Scene Code That Factors In Different Size */
         FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(fxml)));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.show();
-        return fxmlLoader;
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+            return fxmlLoader;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Stage getWindow() {
+        return window;
     }
 }

@@ -7,8 +7,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
-
 public class SignupController {
     @FXML
     private Label prompt;
@@ -16,10 +14,6 @@ public class SignupController {
     private TextField username;
     @FXML
     private PasswordField password;
-
-    @FXML
-    private void initialize() {
-    }
 
     @FXML
     public void onSignUpPress(ActionEvent actionEvent) {
@@ -39,11 +33,7 @@ public class SignupController {
             userDatabase.getUserList().add(newUser);
             userDatabase.setCurrentUser(newUser);
             Main app = new Main();
-            try {
-                app.changeScene(actionEvent, "map-view.fxml");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            app.changeScene(actionEvent, "map-view.fxml");
         }
     }
 
@@ -56,12 +46,8 @@ public class SignupController {
     return false;
     }
 
-    public void onLogInPress (ActionEvent actionEvent) {
+    public void onLogInPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent, "log-in.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent, "log-in.fxml");
     }
 }

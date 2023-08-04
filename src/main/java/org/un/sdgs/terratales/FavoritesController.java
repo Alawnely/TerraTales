@@ -9,47 +9,43 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class FavoritesController extends AController {
 
     @FXML
-    Label nameLabel;
+    private Label nameLabel;
     @FXML
-    Label placeLabel;
+    private Label placeLabel;
     @FXML
-    Label descriptionLabel;
+    private Label descriptionLabel;
     @FXML
-    ImageView locationImage;
+    private ImageView locationImage;
     @FXML
-    VBox favoritesVbox;
-    ArrayList<Location> favoritesList;
+    private VBox favoritesVbox;
     @FXML
-    Label userLabel;
+    private Label userLabel;
+
     @FXML
     private void initialize() {
         nameLabel.setVisible(false);
         placeLabel.setVisible(false);
         descriptionLabel.setVisible(false);
         locationImage.setVisible(false);
-        setFavoritesList();
 
+        User currentUser = UserDatabase.getInstance().getCurrentUser();
+        ArrayList<Location> favoritesList = currentUser.getFavoritesList();
         favoritesVbox.getChildren().clear();
         for (Location location : favoritesList){
             Button button = createLocationButton(location);
             button.setOnAction(mouseEvent -> changeLocation(location));
             favoritesVbox.getChildren().add(button);
         }
-        userLabel.setText(UserDatabase.getInstance().getCurrentUser().getUsername());
+        userLabel.setText(currentUser.getUsername());
         setDropShadow();
 
-        System.out.println(UserDatabase.getInstance().getCurrentUser().getFavoritesList());
+        System.out.println(currentUser.getFavoritesList());
 
-    }
-
-    private void setFavoritesList() {
-        favoritesList = UserDatabase.getInstance().getCurrentUser().getFavoritesList();
     }
 
     private void changeLocation(Location location) {
@@ -68,32 +64,20 @@ public class FavoritesController extends AController {
     @FXML
     public void onMapPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"map-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"map-view.fxml");
     }
 
     /* Change Screen To Favorites */
     @FXML
     public void onLocationPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"location-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"location-view.fxml");
     }
 
     /* Change Screen To Login */
     public void onSignoutPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"log-in.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"log-in.fxml");
     }
 
     private void setDropShadow() {

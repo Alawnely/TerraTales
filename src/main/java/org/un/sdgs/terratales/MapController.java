@@ -3,7 +3,6 @@ package org.un.sdgs.terratales;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -16,8 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class MapController extends AController {
     @FXML
@@ -104,13 +101,9 @@ public class MapController extends AController {
                 Button button = createLocationButton(location);
                 button.setOnAction(actionEvent -> {
                     Main app = new Main();
-                    try {
-                        FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-                        LocationController controller = fxmlLoader.getController();
-                        controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
+                    LocationController controller = fxmlLoader.getController();
+                    controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
                 });
                 locationsVbox.getChildren().add(button);
 
@@ -165,30 +158,18 @@ public class MapController extends AController {
     @FXML
     private void onViewLocationAction(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"location-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"location-view.fxml");
     }
 
     @FXML
     private void onViewFavoritesAction(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"favorites-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"favorites-view.fxml");
     }
 
     @FXML
     private void onSignOutAction(ActionEvent actionEvent) {
-        Main main = new Main();
-        try {
-            main.changeScene(actionEvent,"log-in.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        Main app = new Main();
+        app.changeScene(actionEvent,"log-in.fxml");
     }
 }

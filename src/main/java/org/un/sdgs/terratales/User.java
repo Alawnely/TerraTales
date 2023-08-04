@@ -3,9 +3,8 @@ package org.un.sdgs.terratales;
 import java.util.ArrayList;
 
 public class User {
-
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     private final ArrayList<Location> favoritesList;
 
@@ -19,31 +18,22 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void addFavorites(Location location) {
         favoritesList.add(location);
-        System.out.println(username+": added "+location.getName());
+        System.out.println(username+": fave added "+location.getName());
     }
 
     public void removeFavorites(Location location) {
         favoritesList.remove(location);
-        System.out.println(username+": removed " +location.getName());
+        System.out.println(username+": fave removed " +location.getName());
     }
 
     public ArrayList<Location> getFavoritesList() {
         return favoritesList;
-
     }
 
     @Override

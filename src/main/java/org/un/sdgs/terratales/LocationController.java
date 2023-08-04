@@ -8,26 +8,24 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
-
 public class LocationController extends AController {
 
     @FXML
-    Label nameLabel;
+    private Label nameLabel;
     @FXML
-    Label placeLabel;
+    private Label placeLabel;
     @FXML
-    Label descriptionLabel;
+    private Label descriptionLabel;
     @FXML
-    ImageView locationImage;
+    private ImageView locationImage;
     @FXML
-    Button favoriteButton;
+    private Button favoriteButton;
     @FXML
-    Label userLabel;
+    private Label userLabel;
     @FXML
-    Button previousButton;
+    private Button previousButton;
     @FXML
-    Button nextButton;
+    private Button nextButton;
 
     private static Location loc;
     private static int locIndex;
@@ -42,7 +40,6 @@ public class LocationController extends AController {
     }
     @FXML
     public void onClickNext() {
-
         if (locIndex+1 <= LandDatabase.getInstance().getLocationList().size()-1) {
             locIndex+=1;
             changeLocation(locIndex);
@@ -62,40 +59,29 @@ public class LocationController extends AController {
     @FXML
     public void onBackPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"map-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"map-view.fxml");
     }
 
     /* Change Screen To Favorites */
     @FXML
     public void onFavoriteListPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"favorites-view.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"favorites-view.fxml");
     }
 
     /* Change Screen To Login */
     public void onSignoutPress(ActionEvent actionEvent) {
         Main app = new Main();
-        try {
-            app.changeScene(actionEvent,"log-in.fxml");
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        app.changeScene(actionEvent,"log-in.fxml");
     }
     @FXML
     public void onFavoriteClick() {
-        if (favoriteButton.getText().equalsIgnoreCase("Favorite")) {
+        String currentStatus = favoriteButton.getText();
+        if (currentStatus.equalsIgnoreCase("Favorite")) {
             favoriteButton.setText("Unfavorite");
 
             UserDatabase.getInstance().getCurrentUser().addFavorites(loc);
-        } else if (favoriteButton.getText().equalsIgnoreCase("Unfavorite")) {
+        } else if (currentStatus.equalsIgnoreCase("Unfavorite")) {
             favoriteButton.setText("Favorite");
 
             UserDatabase.getInstance().getCurrentUser().removeFavorites(loc);

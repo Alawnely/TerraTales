@@ -3,7 +3,6 @@ package org.un.sdgs.terratales;
 import java.util.ArrayList;
 
 public class UserDatabase implements IDatabase {
-
     private static UserDatabase instance;
 
     private final ArrayList<User> userList;
