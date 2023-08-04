@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class FavoritesController extends AController {
+public class FavoritesMenuController extends AMenuController {
 
     @FXML
     private Label nameLabel;
@@ -63,25 +63,21 @@ public class FavoritesController extends AController {
 
     /* Change Screen To Map */
     @FXML
-    public void onMapPress(ActionEvent actionEvent) {
+    public void onViewMapAction(ActionEvent actionEvent) {
         Main app = new Main();
         app.changeScene(actionEvent,"map-view.fxml");
     }
 
+    @FXML
+    public void onViewFavoritesAction(ActionEvent actionEvent) { }
+
     /* Change Screen To Favorites */
     @FXML
-    public void onLocationPress(ActionEvent actionEvent) {
+    public void onViewLocationAction(ActionEvent actionEvent) {
         Main app = new Main();
         FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-        LocationController controller = fxmlLoader.getController();
+        LocationMenuController controller = fxmlLoader.getController();
         controller.changeLocation(0);
-    }
-
-    /* Change Screen To Login */
-    @FXML
-    public void onSignoutPress(ActionEvent actionEvent) {
-        Main app = new Main();
-        app.changeScene(actionEvent,"log-in.fxml");
     }
 
     private void setDropShadow() {

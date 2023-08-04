@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="org.un.sdgs.terratales.FavoritesController">
+<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="org.un.sdgs.terratales.FavoritesMenuController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <left>
@@ -29,7 +29,7 @@
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
                <Label fx:id="userLabel" text="ProfileName" />
-               <Button mnemonicParsing="false" onAction="#onSignoutPress" styleClass="button1">
+               <Button mnemonicParsing="false" onAction="#onSignOutPress" styleClass="button1">
                   <HBox.margin>
                      <Insets left="20.0" />
                   </HBox.margin>
@@ -54,14 +54,14 @@
    </top>
    <left>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" onAction="#onLocationPress" styleClass="button1">
+         <Button mnemonicParsing="false" onAction="#onViewLocationAction" styleClass="button1">
             <graphic>
                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@icons/place_inactive.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button mnemonicParsing="false" onAction="#onMapPress" styleClass="button1">
+         <Button mnemonicParsing="false" onAction="#onViewMapAction" styleClass="button1">
             <graphic>
                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@icons/map_inactive.png" />

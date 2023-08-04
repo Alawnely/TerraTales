@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
-public class MapController extends AController {
+public class MapMenuController extends AMenuController {
     @FXML
     private ImageView mapImage;
     @FXML
@@ -102,7 +102,7 @@ public class MapController extends AController {
                 button.setOnAction(actionEvent -> {
                     Main app = new Main();
                     FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-                    LocationController controller = fxmlLoader.getController();
+                    LocationMenuController controller = fxmlLoader.getController();
                     controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), false);
                 });
                 locationsVbox.getChildren().add(button);
@@ -156,22 +156,19 @@ public class MapController extends AController {
     }
 
     @FXML
-    private void onViewLocationAction(ActionEvent actionEvent) {
+    public void onViewLocationAction(ActionEvent actionEvent) {
         Main app = new Main();
         FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
-        LocationController controller = fxmlLoader.getController();
+        LocationMenuController controller = fxmlLoader.getController();
         controller.changeLocation(0);
     }
 
     @FXML
-    private void onViewFavoritesAction(ActionEvent actionEvent) {
-        Main app = new Main();
-        app.changeScene(actionEvent,"favorites-view.fxml");
-    }
+    public void onViewMapAction(ActionEvent actionEvent) { }
 
     @FXML
-    private void onSignOutAction(ActionEvent actionEvent) {
+    public void onViewFavoritesAction(ActionEvent actionEvent) {
         Main app = new Main();
-        app.changeScene(actionEvent,"log-in.fxml");
+        app.changeScene(actionEvent,"favorites-view.fxml");
     }
 }

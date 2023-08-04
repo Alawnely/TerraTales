@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="org.un.sdgs.terratales.MapController">
+<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="org.un.sdgs.terratales.MapMenuController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="678.0" prefWidth="746.0" spacing="20.0" BorderPane.alignment="CENTER">
          <StackPane maxHeight="615.0" maxWidth="615.0">
@@ -41,7 +41,7 @@
                   <HBox.margin>
                      <Insets right="6.0" />
                   </HBox.margin></Label>
-               <Button mnemonicParsing="false" onAction="#onSignOutAction" styleClass="button1">
+               <Button mnemonicParsing="false" onAction="#onSignOutPress" styleClass="button1">
                   <HBox.margin>
                      <Insets left="20.0" />
                   </HBox.margin>

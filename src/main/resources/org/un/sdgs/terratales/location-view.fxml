@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationController">
+<BorderPane prefHeight="720.0" prefWidth="918.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.un.sdgs.terratales.LocationMenuController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <left>
@@ -28,7 +28,7 @@
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
                <Label fx:id="userLabel" text="ProfileName" />
-               <Button mnemonicParsing="false" onAction="#onSignoutPress" styleClass="button1">
+               <Button mnemonicParsing="false" onAction="#onSignOutPress" styleClass="button1">
                   <HBox.margin>
                      <Insets left="20.0" />
                   </HBox.margin>
@@ -63,14 +63,14 @@
                </ImageView>
             </graphic>
          </Button>
-         <Button mnemonicParsing="false" onAction="#onBackPress" styleClass="button1">
+         <Button mnemonicParsing="false" onAction="#onViewMapAction" styleClass="button1">
             <graphic>
                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@icons/map_inactive.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button mnemonicParsing="false" onAction="#onFavoriteListPress" styleClass="button1">
+         <Button mnemonicParsing="false" onAction="#onViewFavoritesAction" styleClass="button1">
             <graphic>
                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@icons/bookmark_inactive.png" />

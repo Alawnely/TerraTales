@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-public class LocationController extends AController {
+public class LocationMenuController extends AMenuController {
 
     @FXML
     private Label nameLabel;
@@ -75,25 +75,23 @@ public class LocationController extends AController {
         System.out.println("Back: "+(locIndex));
     }
 
+    @FXML
+    public void onViewLocationAction(ActionEvent actionEvent) { }
+
     /* Change Screen To Map */
     @FXML
-    public void onBackPress(ActionEvent actionEvent) {
+    public void onViewMapAction(ActionEvent actionEvent) {
         Main app = new Main();
         app.changeScene(actionEvent,"map-view.fxml");
     }
 
     /* Change Screen To Favorites */
     @FXML
-    public void onFavoriteListPress(ActionEvent actionEvent) {
+    public void onViewFavoritesAction(ActionEvent actionEvent) {
         Main app = new Main();
         app.changeScene(actionEvent,"favorites-view.fxml");
     }
 
-    /* Change Screen To Login */
-    public void onSignoutPress(ActionEvent actionEvent) {
-        Main app = new Main();
-        app.changeScene(actionEvent,"log-in.fxml");
-    }
     @FXML
     public void onFavoriteClick() {
         String currentStatus = favoriteButton.getText();
@@ -157,7 +155,7 @@ public class LocationController extends AController {
         dialog.setResizable(false);
         dialog.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
 
-        LocationController controller = fxmlLoader.getController();
+        LocationMenuController controller = fxmlLoader.getController();
         System.out.println(locIndex);
         controller.loadLocationEdit(locIndex);
 
