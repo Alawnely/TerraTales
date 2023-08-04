@@ -2,19 +2,9 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class SignupController {
-    @FXML
-    private Label prompt;
-    @FXML
-    private TextField username;
-    @FXML
-    private PasswordField password;
-
+public class SignupController extends AMainController {
     @FXML
     public void onSignUpPress(ActionEvent actionEvent) {
 
@@ -43,7 +33,7 @@ public class SignupController {
                 return true;
             }
         }
-    return false;
+        return false;
     }
 
     public void onLogInPress(ActionEvent actionEvent) {

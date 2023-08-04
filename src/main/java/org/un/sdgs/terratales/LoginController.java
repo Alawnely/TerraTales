@@ -2,19 +2,9 @@ package org.un.sdgs.terratales;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class LoginController {
-    @FXML
-    private Label prompt;
-    @FXML
-    private TextField username;
-    @FXML
-    private PasswordField password;
-
+public class LoginController extends AMainController {
     @FXML
     public void onLogInPress(ActionEvent actionEvent) {
 
