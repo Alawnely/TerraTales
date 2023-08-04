@@ -103,7 +103,7 @@ public class MapController extends AController {
                     Main app = new Main();
                     FXMLLoader fxmlLoader = app.changeScene(actionEvent,"location-view.fxml");
                     LocationController controller = fxmlLoader.getController();
-                    controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), true);
+                    controller.changeLocation(LandDatabase.getInstance().getLocationList().indexOf(location), false);
                 });
                 locationsVbox.getChildren().add(button);
 

@@ -91,6 +91,7 @@ public class LocationController extends AController {
 
     public void changeLocation(int index, boolean peekOnly){
         loc = LandDatabase.getInstance().getLocationList().get(index);
+        locIndex = index;
 
         nameLabel.setText(loc.getName());
         placeLabel.setText(loc.getPlace());
